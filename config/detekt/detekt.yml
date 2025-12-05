@@ -1,0 +1,57 @@
+config:
+  validation: true
+  # Excludes source files from being analyzed using regular expressions.
+  excludes: '.*/build/.*,.*/generated/.*,.*/\.idea/.*,.*/resources/.*,.*/presentation/theme/.*'
+
+build:
+  # By default, detekt fails the build if any rule violations are found. 
+  # Setting maxIssues to a higher value allows the build to pass with some issues.
+  maxIssues: 10
+
+# Rule set specific configurations
+style:
+  # Catches magic numbers, but allows some common, safe values.
+  MagicNumber:
+    active: false
+    ignoreNumbers: ["-1", "0", "1", "2", "7",  "100", "1000"]
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotated: ["LottieAnimation"]
+
+  # Reports functions with too many return statements.
+  ReturnCount:
+    active: true
+    max: 4
+
+complexity:
+  # Reports long parameter lists, but gives a bit more flexibility for constructors.
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+    constructorThreshold: 8
+
+  # Discourages overly long methods.
+  LongMethod:
+    active: true
+    threshold: 100
+
+  # Reports files with too many functions.
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 15
+
+  # Reports methods with a high cyclomatic complexity.
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+
+naming:
+  # This pattern allows for both camelCase and PascalCase function names,
+  # which is a simple way to support Composable function naming conventions.
+  FunctionNaming:
+    active: true
+    functionPattern: '[a-zA-Z][a-zA-Z0-9_]*'
+
+# Configuration for detekt's formatting rule set that is backed by ktlint.
+formatting:
+  active: true
+  autoCorrect: true
