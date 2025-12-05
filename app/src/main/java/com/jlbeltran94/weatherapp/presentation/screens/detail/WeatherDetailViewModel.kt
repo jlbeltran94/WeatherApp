@@ -2,8 +2,8 @@ package com.jlbeltran94.weatherapp.presentation.screens.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jlbeltran94.weatherapp.data.mapper.toCity
 import com.jlbeltran94.weatherapp.domain.exception.DomainException
-import com.jlbeltran94.weatherapp.domain.model.City
 import com.jlbeltran94.weatherapp.domain.model.Weather
 import com.jlbeltran94.weatherapp.domain.usecase.GetWeatherUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.SaveRecentSearchUseCase
@@ -30,14 +30,7 @@ class WeatherDetailViewModel @Inject constructor(
                 onSuccess = { weather ->
                     _uiState.value = WeatherDetailUiState.Success(weather)
                     // Save to recent searches - use city name as ID
-                    val city = City(
-                        id = "${weather.cityName},${weather.country}",
-                        name = weather.cityName,
-                        region = weather.region,
-                        country = weather.country,
-                        lat = weather.cityLat,
-                        lon = weather.cityLon
-                    )
+                    val city = weather.toCity()
                     saveRecentSearchUseCase(city, weather)
                 },
                 onFailure = { error ->

@@ -64,6 +64,17 @@ fun WeatherResponseDto.toWeather(): Weather {
     )
 }
 
+fun Weather.toCity(): City {
+    return City(
+        id = "$cityName,$country",
+        name = cityName,
+        region = region,
+        country = country,
+        lat = cityLat,
+        lon = cityLon
+    )
+}
+
 internal fun formatTime(timeString: String): String {
     return try {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
