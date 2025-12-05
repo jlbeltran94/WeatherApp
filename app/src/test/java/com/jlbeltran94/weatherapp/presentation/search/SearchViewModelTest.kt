@@ -1,12 +1,14 @@
 package com.jlbeltran94.weatherapp.presentation.search
 
 import app.cash.turbine.test
+import com.jlbeltran94.weatherapp.domain.exception.DomainException
 import com.jlbeltran94.weatherapp.domain.model.City
 import com.jlbeltran94.weatherapp.domain.model.RecentSearch
 import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.SearchCitiesUseCase
 import com.jlbeltran94.weatherapp.presentation.screens.search.SearchUiState
 import com.jlbeltran94.weatherapp.presentation.screens.search.SearchViewModel
+import com.jlbeltran94.weatherapp.presentation.screens.search.UiEvent
 import com.jlbeltran94.weatherapp.util.MainCoroutineRule
 import io.mockk.coEvery
 import io.mockk.every
@@ -21,6 +23,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.io.IOException
 
 @ExperimentalCoroutinesApi
 class SearchViewModelTest {
@@ -88,6 +91,35 @@ class SearchViewModelTest {
 
             assertEquals(SearchUiState.Loading, awaitItem())
             assertTrue(awaitItem() is SearchUiState.NoResults)
+        }
+    }
+
+    @Test
+    fun `search emits ShowSnackbar on network error`() = runTest(testDispatcher) {
+        val query = "ErrorCity"
+        val errorMessage = "Network request failed"
+        val code = 500
+        val cause = IOException(errorMessage)
+        val expectedMessage = "java.io.IOException: Network request failed"
+        val exception = DomainException.ApiError(
+            code = code,
+            errorMessage = errorMessage,
+            cause = cause
+        )
+        coEvery { searchCitiesUseCase(query) } returns Result.failure(exception)
+
+        viewModel.eventFlow.test {
+            // Trigger search
+            viewModel.onSearchQueryChange(query)
+            advanceUntilIdle() // Let debounce and search finish
+
+            // Assert snackbar event
+            val event = awaitItem()
+            assertTrue(event is UiEvent.ShowSnackbar)
+            assertEquals(expectedMessage, (event as UiEvent.ShowSnackbar).message)
+
+            // Assert that the state is updated to NoResults
+            assertTrue(viewModel.uiState.value is SearchUiState.NoResults)
         }
     }
 
