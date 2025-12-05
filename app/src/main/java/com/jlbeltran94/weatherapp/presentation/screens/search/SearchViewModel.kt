@@ -2,6 +2,7 @@ package com.jlbeltran94.weatherapp.presentation.screens.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jlbeltran94.weatherapp.domain.exception.DomainException
 import com.jlbeltran94.weatherapp.domain.model.City
 import com.jlbeltran94.weatherapp.domain.model.RecentSearch
 import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
@@ -10,8 +11,10 @@ import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
@@ -36,6 +39,9 @@ class SearchViewModel @Inject constructor(
     val recentSearches: StateFlow<List<RecentSearch>> = _recentSearches.asStateFlow()
 
     private var searchJob: Job? = null
+
+    private val _eventFlow = MutableSharedFlow<UiEvent>()
+    val eventFlow = _eventFlow.asSharedFlow()
 
     init {
         loadRecentSearches()
@@ -72,18 +78,20 @@ class SearchViewModel @Inject constructor(
                     }
                 },
                 onFailure = { error ->
-                    _uiState.value = SearchUiState.Error(
-                        if (error.message?.contains("network", ignoreCase = true) == true ||
-                            error.message?.contains(
-                                "Unable to resolve host",
-                                ignoreCase = true
-                            ) == true
-                        ) {
-                            ErrorType.IO_ERROR
-                        } else {
-                            ErrorType.UNKNOWN
+                    when (error) {
+                        is DomainException.ApiError -> {
+                            viewModelScope.launch {
+                                error.message?.let {
+                                    _eventFlow.emit(UiEvent.ShowSnackbar(it))
+                                }
+                            }
+                            _uiState.value = SearchUiState.NoResults
                         }
-                    )
+                        is DomainException.IOError -> {
+                            _uiState.value = SearchUiState.Error(ErrorType.IO_ERROR)
+                        }
+                        else -> _uiState.value = SearchUiState.Error(ErrorType.UNKNOWN)
+                    }
                 }
             )
         }
@@ -109,4 +117,8 @@ sealed class SearchUiState {
     data class Success(val cities: List<City>) : SearchUiState()
     object NoResults : SearchUiState()
     data class Error(val errorType: ErrorType) : SearchUiState()
+}
+
+sealed interface UiEvent {
+    data class ShowSnackbar(val message: String) : UiEvent
 }
