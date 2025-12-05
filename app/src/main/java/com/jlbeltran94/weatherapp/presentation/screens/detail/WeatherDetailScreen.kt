@@ -62,15 +62,6 @@ fun WeatherDetailScreen(
         viewModel.loadWeather(cityQuery)
     }
 
-    LaunchedEffect(uiState) {
-        when (val state = uiState) {
-            is WeatherDetailUiState.Error -> {
-                onNavigateToError(state.errorType)
-            }
-            else -> {}
-        }
-    }
-
     when (val state = uiState) {
         is WeatherDetailUiState.Loading -> {
             WeatherDetailShimmer()
@@ -79,7 +70,7 @@ fun WeatherDetailScreen(
             WeatherDetailContent(weather = state.weather, onNavigateBack = onNavigateBack)
         }
         is WeatherDetailUiState.Error -> {
-            // Error navigation is handled in LaunchedEffect
+            onNavigateToError(state.errorType)
         }
     }
 }
