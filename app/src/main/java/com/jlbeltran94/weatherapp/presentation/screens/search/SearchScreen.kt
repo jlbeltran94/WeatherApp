@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -21,17 +20,17 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jlbeltran94.weatherapp.R
+import com.jlbeltran94.weatherapp.domain.model.RecentSearch
 import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.CitiesResults
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.NoResultsFound
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.ResentSearch
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.SearchBar
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.SearchShimmer
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme
+import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
 import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
@@ -39,17 +38,17 @@ import kotlinx.coroutines.flow.collectLatest
 fun SearchScreen(
     onNavigateToDetail: (String) -> Unit,
     onNavigateToError: (ErrorType) -> Unit,
-    viewModel: SearchViewModel = hiltViewModel()
+    onClearSearch: () -> Unit,
+    onSearchQueryChange: (String) -> Unit,
+    uiState: SearchUiState,
+    searchQuery: String,
+    recentSearches: List<RecentSearch>,
+    eventFlow: SharedFlow<UiEvent>
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
-    val recentSearches by viewModel.recentSearches.collectAsStateWithLifecycle()
-    val dimens = AppTheme.dimens
     val keyboardController = LocalSoftwareKeyboardController.current
     val snackbarHostState = remember { SnackbarHostState() }
-
     LaunchedEffect(Unit) {
-        viewModel.eventFlow.collectLatest { event ->
+        eventFlow.collectLatest { event ->
             when (event) {
                 is UiEvent.ShowSnackbar -> {
                     keyboardController?.hide()
@@ -60,17 +59,6 @@ fun SearchScreen(
                     )
                 }
             }
-        }
-    }
-
-    LaunchedEffect(uiState) {
-        when (val state = uiState) {
-            is SearchUiState.Error -> {
-                keyboardController?.hide()
-                onNavigateToError(state.errorType)
-            }
-
-            else -> {}
         }
     }
 
@@ -96,11 +84,11 @@ fun SearchScreen(
         ) {
             SearchBar(
                 searchQuery = searchQuery,
-                onClearSearch = viewModel::clearSearch,
-                onSearchQueryChange = viewModel::onSearchQueryChange
+                onClearSearch = onClearSearch,
+                onSearchQueryChange = onSearchQueryChange
             )
 
-            when (val state = uiState) {
+            when (uiState) {
                 is SearchUiState.Idle -> {
                     ResentSearch(recentSearches, keyboardController, onNavigateToDetail)
                 }
@@ -110,7 +98,7 @@ fun SearchScreen(
                 }
 
                 is SearchUiState.Success -> {
-                    CitiesResults(state.cities, keyboardController, onNavigateToDetail)
+                    CitiesResults(uiState.cities, keyboardController, onNavigateToDetail)
                 }
 
                 is SearchUiState.NoResults -> {
@@ -118,7 +106,8 @@ fun SearchScreen(
                 }
 
                 is SearchUiState.Error -> {
-                    // Handled inside LaunchedEffect
+                    keyboardController?.hide()
+                    onNavigateToError(uiState.errorType)
                 }
             }
         }
