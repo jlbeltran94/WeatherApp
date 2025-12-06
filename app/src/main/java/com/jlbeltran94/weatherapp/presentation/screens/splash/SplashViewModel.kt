@@ -23,7 +23,7 @@ class SplashViewModel @Inject constructor(
 
     private var validationJob: Job? = null
 
-    fun performValidations(onNavigateToSearch: () -> Unit, onNavigateToError: (ErrorType) -> Unit) {
+    fun performValidations() {
         // Cancel any existing validation job
         validationJob?.cancel()
 
@@ -34,19 +34,15 @@ class SplashViewModel @Inject constructor(
             // Check network connectivity
             if (!networkMonitor.isNetworkAvailable()) {
                 _uiState.value = SplashUiState.Error(ErrorType.IO_ERROR)
-                onNavigateToError(ErrorType.IO_ERROR)
                 return@launch
             }
 
             // Check API key (basic validation - just check if it's not the placeholder)
             if (apiKey == "YOUR_API_KEY_HERE" || apiKey.isBlank()) {
                 _uiState.value = SplashUiState.Error(ErrorType.UNKNOWN)
-                onNavigateToError(ErrorType.UNKNOWN)
                 return@launch
             }
-
             _uiState.value = SplashUiState.Success
-            onNavigateToSearch()
         }
     }
 }

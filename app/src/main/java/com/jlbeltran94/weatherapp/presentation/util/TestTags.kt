@@ -2,6 +2,9 @@ package com.jlbeltran94.weatherapp.presentation.util
 
 object TestTags {
 
+    // Splash Screen
+    const val SPLASH_LOADING = "SPLASH_LOADING"
+
     // Search Screen
     const val SEARCH_INPUT = "SEARCH_INPUT"
     const val CITY_ITEM = "CITY_ITEM"

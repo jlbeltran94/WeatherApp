@@ -1,5 +1,9 @@
 package com.jlbeltran94.weatherapp.presentation.screens.splash
 
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -8,7 +12,13 @@ import com.jlbeltran94.weatherapp.presentation.navigation.Screen
 
 fun NavGraphBuilder.addSplash(navController: NavHostController) {
     composable(Screen.Splash.route) {
+        val viewModel: SplashViewModel = hiltViewModel()
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+        LaunchedEffect(key1 = true) {
+            viewModel.performValidations()
+        }
         SplashScreen(
+            uiState = uiState,
             onNavigateToSearch = {
                 navController.navigate(Screen.Search.route) {
                     popUpTo(Screen.Splash.route) { inclusive = true }

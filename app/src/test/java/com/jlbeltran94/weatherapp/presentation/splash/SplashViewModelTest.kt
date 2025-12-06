@@ -38,50 +38,38 @@ class SplashViewModelTest {
     fun `performValidations navigates to search on success`() = runTest(testDispatcher) {
         every { networkMonitor.isNetworkAvailable() } returns true
         viewModel = SplashViewModel(networkMonitor, "VALID_API_KEY")
-        val onNavigateToSearch: () -> Unit = mockk(relaxed = true)
-        val onNavigateToError: (ErrorType) -> Unit = mockk(relaxed = true)
 
-        viewModel.performValidations(onNavigateToSearch, onNavigateToError)
+        viewModel.performValidations()
         advanceTimeBy(2100) // Advance past the 2-second delay
 
         viewModel.uiState.test {
             assertEquals(SplashUiState.Success, awaitItem())
         }
-        verify { onNavigateToSearch() }
-        verify(exactly = 0) { onNavigateToError(any()) }
     }
 
     @Test
     fun `performValidations navigates to error on no network`() = runTest(testDispatcher) {
         every { networkMonitor.isNetworkAvailable() } returns false
         viewModel = SplashViewModel(networkMonitor, "VALID_API_KEY")
-        val onNavigateToSearch: () -> Unit = mockk(relaxed = true)
-        val onNavigateToError: (ErrorType) -> Unit = mockk(relaxed = true)
 
-        viewModel.performValidations(onNavigateToSearch, onNavigateToError)
+        viewModel.performValidations()
         advanceTimeBy(2100)
 
         viewModel.uiState.test {
             assertEquals(ErrorType.IO_ERROR, (awaitItem() as SplashUiState.Error).errorType)
         }
-        verify { onNavigateToError(ErrorType.IO_ERROR) }
-        verify(exactly = 0) { onNavigateToSearch() }
     }
 
     @Test
     fun `performValidations navigates to error on blank API key`() = runTest(testDispatcher) {
         every { networkMonitor.isNetworkAvailable() } returns true
         viewModel = SplashViewModel(networkMonitor, "YOUR_API_KEY_HERE") // Using placeholder value
-        val onNavigateToSearch: () -> Unit = mockk(relaxed = true)
-        val onNavigateToError: (ErrorType) -> Unit = mockk(relaxed = true)
 
-        viewModel.performValidations(onNavigateToSearch, onNavigateToError)
+        viewModel.performValidations()
         advanceTimeBy(2100)
 
         viewModel.uiState.test {
             assertEquals(ErrorType.UNKNOWN, (awaitItem() as SplashUiState.Error).errorType)
         }
-        verify { onNavigateToError(ErrorType.UNKNOWN) }
-        verify(exactly = 0) { onNavigateToSearch() }
     }
 }
