@@ -8,7 +8,6 @@ import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashViewModel
 import com.jlbeltran94.weatherapp.util.MainCoroutineRule
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceTimeBy
