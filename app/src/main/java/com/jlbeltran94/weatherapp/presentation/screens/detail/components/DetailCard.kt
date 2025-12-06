@@ -18,7 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
 
 @Composable
-fun DetailCard(title: String, value: String, modifier: Modifier = Modifier) {
+fun DetailCard(
+    title: String,
+    value: String,
+    modifier: Modifier = Modifier
+) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(dimens.spacingLarge),
