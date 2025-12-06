@@ -226,19 +226,20 @@ This function dynamically prepends the correct protocol based on the device's An
 ## Testing
 
 This project uses a variety of tests to ensure the code is working correctly.
-<br/>
-<img src="readmeImages/testResults_unitTests.png" alt="Integration tests results" width="400"/>
 
 ### Unit Tests
 
 Located in `app/src/test`, these tests run on the JVM and check the logic of individual components
 like ViewModels, UseCases, and Repositories. Key libraries include **JUnit**, **Robolectric** for
 compose unit tests, **mockK** for creating test mocks, and **Turbine** for testing `StateFlow`.
+
 <br/>
-<img src="readmeImages/testResults_unitTests.png" alt="Unit tests results" width="400"/>
+<img src="readmeImages/testResults_unitTests.png" alt="Integration tests results" width="400"/>
 
 ### Instrumentation Tests
 
 Located in `app/src/androidTest`, these tests run on an Android device or emulator. They verify UI
 components built with Jetpack Compose and test Android-specific features like the Room database
 using an in-memory database for testing.
+<br/>
+<img src="readmeImages/testResults_unitTests.png" alt="Unit tests results" width="400"/>
