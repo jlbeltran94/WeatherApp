@@ -19,13 +19,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.testTag
 import com.jlbeltran94.weatherapp.presentation.components.rememberShimmerBrush
 import com.jlbeltran94.weatherapp.presentation.theme.AppTheme
+import com.jlbeltran94.weatherapp.presentation.util.TestTags
 
 @Composable
 fun SearchShimmer() {
     val brush = rememberShimmerBrush()
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag(TestTags.SEARCH_SHIMMER)
+    ) {
         items(8) {
             ShimmerCityItem(brush = brush)
         }

@@ -7,6 +7,8 @@ object TestTags {
     const val CITY_ITEM = "CITY_ITEM"
     const val NO_RESULTS_FOUND = "NO_RESULTS_FOUND"
     const val RECENT_SEARCH_ITEM = "RECENT_SEARCH_ITEM"
+    const val SEARCH_SHIMMER = "SEARCH_SHIMMER"
+
 
     // Error Screens
     const val NO_NETWORK_SCREEN = "NO_NETWORK_SCREEN"
