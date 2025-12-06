@@ -24,29 +24,52 @@ WeatherApp is a modern Android application built with Kotlin and Jetpack Compose
 ## Screens
 
 ### Splash
-This screen displays and animation and perform 2 initial validations, one for network availability and the other for the API key, to verify that is not empty or the placeholder
-![splash screen animation](readmeImages/screen_splashAnimation.gif)
-]
+This screen displays an animation and performs 2 initial validations, one for network availability and the other for the API key, to verify that it is not empty or the placeholder
+<br/>
+<img src="readmeImages/screen_splashAnimation.gif" alt="splash screen animation" width="200"/>
 ### Search
-This screen allows the users to interact with the search bar and look for the city that they are interested, it has 5 main states:
+This screen allows users to interact with the search bar and find the city they are interested in. It has 5 main states:
 #### Idle
-This state is the initial state when the users has not yet interacted with the app
-![screen search idle state](readmeImages/screen_searchIdle.png)
+This state is the initial state when the user has not yet interacted with the app
+<br/>
+<img src="readmeImages/screen_searchIdle.png" alt="screen search idle state" width="200"/>
+
 #### Idle with recent searches
-In this status the user has already done some search that are displayed as recent searches to allow the user to choose one
-![screen idle with recent search](readmeImages/screen_idleRecentSearch.png)
+In this state, the user has already done some searches that are displayed as recent searches to allow the user to choose one
+<br/>
+<img src="readmeImages/screen_idleRecentSearch.png" alt="screen idle with recent search" width="200"/>
+
 #### Loading
-The user is interacting with the search bar and the app is fetching the data from the API
-![screen loading.png](readmeImages/screen_searchLoading.png)
+The user is interacting with the search bar, and the app is fetching the data from the API
+<br/>
+<img src="readmeImages/screen_searchLoading.png" alt="screen loading" width="200"/>
+
 #### Success
 The user has successfully fetched the data from the API
-![screen success search.png](readmeImages/screen_searchSuccess.png)
+<br/>
+<img src="readmeImages/screen_searchSuccess.png" alt="screen success search" width="200"/>
+
 #### No results found
-No results were found for the text wrote inside the search bar 
-![screen no results](readmeImages/screen_searchNoResults.png)
+No results were found for the text written inside the search bar 
+<br/>
+<img src="readmeImages/screen_searchNoResults.png" alt="screen no results" width="200"/>
+
 ### Detail
 This screen shows the weather information for the selected city
-![screen details](readmeImages/screen_details.png)
+<br/>
+<img src="readmeImages/screen_details.png" alt="screen details" width="200"/>
+
+### Error screens
+There are also 2 screens to display basic errors to the users
+
+#### No internet connection
+<br/>
+<img src="readmeImages/screen_noInternetError.png" alt="screen no internet error" width="200"/>
+
+#### Unexpected/unknown error
+
+<br/>
+<img src="readmeImages/screen_unexpectedError.png" alt="screen unexpected error" width="200"/>
 
 ## Architecture
 
