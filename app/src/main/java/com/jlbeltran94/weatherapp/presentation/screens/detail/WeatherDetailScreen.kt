@@ -174,25 +174,26 @@ fun WeatherDetailContent(weather: Weather, onNavigateBack: () -> Unit) {
     Scaffold(
         modifier = Modifier.testTag(TestTags.WEATHER_DETAIL_CONTENT),
         topBar = {
-            Column(modifier = Modifier
-                .zIndex(0f)
-                .fillMaxWidth()
-                .background(Brush.verticalGradient(colors = listOf(SkyBlue, DarkBlue)))
-                ) {
+            Column(
+                modifier = Modifier
+                    .zIndex(0f)
+                    .fillMaxWidth()
+                    .background(Brush.verticalGradient(colors = listOf(SkyBlue, DarkBlue)))
+            ) {
 
                 TopAppBar(
                     title = {
-                            Text(
-                                text = stringResource(
-                                    R.string.city_region_country,
-                                    weather.cityName,
-                                    weather.country
-                                ),
-                                color = White.copy(alpha = scrollState.collapsedFraction),
-                                style = typography.titleLarge,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier.fillMaxWidth()
-                            )
+                        Text(
+                            text = stringResource(
+                                R.string.city_region_country,
+                                weather.cityName,
+                                weather.country
+                            ),
+                            color = White.copy(alpha = scrollState.collapsedFraction),
+                            style = typography.titleLarge,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     },
                     navigationIcon = {
                         IconButton(onClick = onNavigateBack) {

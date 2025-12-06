@@ -18,6 +18,7 @@ user-friendly interface.
     * [Screens](#screens)
 * [Workaround for Android Versions Below Pie (API < 28)](#workaround-for-android-versions-below-pie-api--28)
 * [Testing](#testing)
+* [CI-CD](#ci-cd)
 
 ## Features
 * Search bar to allow searches.
@@ -243,3 +244,17 @@ components built with Jetpack Compose and test Android-specific features like th
 using an in-memory database for testing.
 <br/>
 <img src="readmeImages/testResults_unitTests.png" alt="Unit tests results" width="400"/>
+
+## CI-CD
+
+This project has a basic Continuous Integration (CI) process configured to automatically check the code quality on every pull request that targets the `main` branch. The CI pipeline is defined in the `.github/workflows/ci.yml` file and uses GitHub Actions to run a series of checks.
+
+The process includes the following steps:
+
+1.  **Code Checkout**: The first step checks out the latest version of the code from the repository.
+2.  **Set up JDK**: It sets up a Java 17 environment, which is required to build the project.
+3.  **Run Detekt**: It runs a static analysis check with Detekt to identify and report any code smells or potential issues.
+4.  **Run Lint**: It runs the Android Lint tool to check for any structural issues in the code.
+5.  **Run Unit Tests**: Finally, it runs all the unit tests in the project to ensure that everything is working as expected.
+
+If any of these steps fail, the CI process will fail, and the pull request will be blocked from being merged. This ensures that only high-quality code that passes all the checks is merged into the `main` branch.
