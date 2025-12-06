@@ -19,11 +19,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
 import com.jlbeltran94.weatherapp.presentation.components.rememberShimmerBrush
 import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
 import com.jlbeltran94.weatherapp.presentation.theme.DarkBlue
 import com.jlbeltran94.weatherapp.presentation.theme.SkyBlue
+import com.jlbeltran94.weatherapp.presentation.util.TestTags
 
 @Composable
 fun WeatherDetailShimmer() {
@@ -39,7 +41,7 @@ fun WeatherDetailShimmer() {
                     Brush.verticalGradient(
                         colors = listOf(SkyBlue.copy(alpha = 0.6f), DarkBlue.copy(alpha = 0.6f))
                     )
-                )
+                ).testTag(TestTags.WEATHER_DETAIL_SHIMMER)
         ) {
             Column(
                 modifier = Modifier

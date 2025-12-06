@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,6 +31,7 @@ import com.jlbeltran94.weatherapp.presentation.screens.search.components.ResentS
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.SearchBar
 import com.jlbeltran94.weatherapp.presentation.screens.search.components.SearchShimmer
 import com.jlbeltran94.weatherapp.presentation.theme.AppTheme
+import com.jlbeltran94.weatherapp.presentation.util.TestTags
 import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
@@ -73,7 +75,7 @@ fun SearchScreen(
     }
 
     Scaffold(
-        snackbarHost = { SnackbarHost(snackbarHostState) },
+        snackbarHost = { SnackbarHost(modifier = Modifier.testTag(TestTags.ERROR_SNACKBAR), hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = {

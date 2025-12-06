@@ -7,6 +7,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performTextInput
 import com.jlbeltran94.weatherapp.MainActivity
+import com.jlbeltran94.weatherapp.domain.exception.DomainException
 import com.jlbeltran94.weatherapp.domain.model.City
 import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.SearchCitiesUseCase
@@ -96,7 +97,11 @@ class SearchScreenTest {
         // Given
         val searchQuery = "FailingCity"
         // Use IOException to simulate a network error
-        coEvery { searchCitiesUseCase(searchQuery) } returns Result.failure(IOException("Network Error"))
+        coEvery { searchCitiesUseCase(searchQuery) } returns Result.failure(
+            DomainException.IOError(
+                IOException("Network Error")
+            )
+        )
 
         // Wait for the search input to be ready
         composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.SEARCH_INPUT), 3000)

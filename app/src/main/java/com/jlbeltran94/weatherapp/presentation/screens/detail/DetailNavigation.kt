@@ -1,5 +1,9 @@
 package com.jlbeltran94.weatherapp.presentation.screens.detail
 
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -12,8 +16,13 @@ fun NavGraphBuilder.addDetail(navController: NavHostController) {
         val cityQuery = backStackEntry.arguments?.getString("cityQuery")?.let {
             URLDecoder.decode(it, "UTF-8")
         } ?: ""
+        val viewModel: WeatherDetailViewModel = hiltViewModel()
+        val uiState by viewModel.uiState.collectAsState()
+
+        LaunchedEffect(cityQuery) {
+            viewModel.loadWeather(cityQuery)
+        }
         WeatherDetailScreen(
-            cityQuery = cityQuery,
             onNavigateBack = {
                 navController.popBackStack()
             },
@@ -24,7 +33,8 @@ fun NavGraphBuilder.addDetail(navController: NavHostController) {
                     ErrorType.IO_ERROR -> navController.navigate(Screen.NoNetwork.route)
                     ErrorType.UNKNOWN -> navController.navigate(Screen.UnexpectedError.route)
                 }
-            }
+            },
+            uiState = uiState
         )
     }
 }

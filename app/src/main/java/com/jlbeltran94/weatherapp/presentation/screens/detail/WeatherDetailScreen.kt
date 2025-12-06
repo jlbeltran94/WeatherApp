@@ -51,17 +51,10 @@ import com.jlbeltran94.weatherapp.presentation.util.extensions.withProtocol
 
 @Composable
 fun WeatherDetailScreen(
-    cityQuery: String,
     onNavigateBack: () -> Unit,
     onNavigateToError: (ErrorType) -> Unit,
-    viewModel: WeatherDetailViewModel = hiltViewModel()
+    uiState: WeatherDetailUiState
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-
-    LaunchedEffect(cityQuery) {
-        viewModel.loadWeather(cityQuery)
-    }
-
     when (val state = uiState) {
         is WeatherDetailUiState.Loading -> {
             WeatherDetailShimmer()
@@ -79,6 +72,7 @@ fun WeatherDetailScreen(
 @Composable
 fun WeatherDetailContent(weather: Weather, onNavigateBack: () -> Unit) {
     CollapsingToolbar(
+        modifier = Modifier.testTag(TestTags.WEATHER_DETAIL_CONTENT),
         header = {
             Box(
                 modifier = Modifier
