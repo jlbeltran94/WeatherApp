@@ -21,6 +21,33 @@ WeatherApp is a modern Android application built with Kotlin and Jetpack Compose
 * Caches data locally for offline access using Room.
 * Asynchronous operations managed with Kotlin Coroutines.
 
+## Screens
+
+### Splash
+This screen displays and animation and perform 2 initial validations, one for network availability and the other for the API key, to verify that is not empty or the placeholder
+![splash screen animation](readmeImages/screen_splashAnimation.gif)
+]
+### Search
+This screen allows the users to interact with the search bar and look for the city that they are interested, it has 5 main states:
+#### Idle
+This state is the initial state when the users has not yet interacted with the app
+![screen search idle state](readmeImages/screen_searchIdle.png)
+#### Idle with recent searches
+In this status the user has already done some search that are displayed as recent searches to allow the user to choose one
+![screen idle with recent search](readmeImages/screen_idleRecentSearch.png)
+#### Loading
+The user is interacting with the search bar and the app is fetching the data from the API
+![screen loading.png](readmeImages/screen_searchLoading.png)
+#### Success
+The user has successfully fetched the data from the API
+![screen success search.png](readmeImages/screen_searchSuccess.png)
+#### No results found
+No results were found for the text wrote inside the search bar 
+![screen no results](readmeImages/screen_searchNoResults.png)
+### Detail
+This screen shows the weather information for the selected city
+![screen details](readmeImages/screen_details.png)
+
 ## Architecture
 
 This app follows the Model-View-ViewModel (MVVM) architecture pattern, which is recommended for modern Android development. This promotes a separation of concerns, making the app more robust, testable, and maintainable.
