@@ -13,15 +13,9 @@ import java.net.URLDecoder
 
 fun NavGraphBuilder.addDetail(navController: NavHostController) {
     composable(Screen.Detail.route) { backStackEntry ->
-        val cityQuery = backStackEntry.arguments?.getString("cityQuery")?.let {
-            URLDecoder.decode(it, "UTF-8")
-        } ?: ""
         val viewModel: WeatherDetailViewModel = hiltViewModel()
         val uiState by viewModel.uiState.collectAsState()
 
-        LaunchedEffect(cityQuery) {
-            viewModel.loadWeather(cityQuery)
-        }
         WeatherDetailScreen(
             onNavigateBack = {
                 navController.popBackStack()

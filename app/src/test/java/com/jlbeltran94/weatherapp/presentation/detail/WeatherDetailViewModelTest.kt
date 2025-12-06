@@ -1,5 +1,6 @@
 package com.jlbeltran94.weatherapp.presentation.detail
 
+import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import com.jlbeltran94.weatherapp.domain.exception.DomainException
 import com.jlbeltran94.weatherapp.domain.model.Weather
@@ -10,6 +11,7 @@ import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailUiSta
 import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailViewModel
 import com.jlbeltran94.weatherapp.util.MainCoroutineRule
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -32,11 +34,18 @@ class WeatherDetailViewModelTest {
     private lateinit var saveRecentSearchUseCase: SaveRecentSearchUseCase
     private lateinit var viewModel: WeatherDetailViewModel
 
+    private lateinit var savedStateHandle: SavedStateHandle
+
     @Before
     fun setUp() {
         getWeatherUseCase = mockk()
         saveRecentSearchUseCase = mockk(relaxed = true)
-        viewModel = WeatherDetailViewModel(getWeatherUseCase, saveRecentSearchUseCase)
+        savedStateHandle = mockk(relaxed = true)
+        viewModel = WeatherDetailViewModel(
+            getWeatherUseCase = getWeatherUseCase,
+            saveRecentSearchUseCase = saveRecentSearchUseCase,
+            savedStateHandle = savedStateHandle
+        )
     }
 
     @Test
@@ -44,10 +53,8 @@ class WeatherDetailViewModelTest {
         // Given
         val cityQuery = "London"
         val weather = mockk<Weather>(relaxed = true)
+        every { savedStateHandle.get<String>("cityQuery") } returns cityQuery
         coEvery { getWeatherUseCase(cityQuery) } returns Result.success(weather)
-
-        // When
-        viewModel.loadWeather(cityQuery)
 
         // Then
         viewModel.uiState.test {
@@ -61,10 +68,8 @@ class WeatherDetailViewModelTest {
         // Given
         val cityQuery = "London"
         val exception = DomainException.IOError(IOException())
+        every { savedStateHandle.get<String>("cityQuery") } returns cityQuery
         coEvery { getWeatherUseCase(cityQuery) } returns Result.failure(exception)
-
-        // When
-        viewModel.loadWeather(cityQuery)
 
         // Then
         viewModel.uiState.test {
@@ -79,10 +84,8 @@ class WeatherDetailViewModelTest {
         // Given
         val cityQuery = "London"
         val exception = DomainException.UnknownError(RuntimeException())
+        every { savedStateHandle.get<String>("cityQuery") } returns cityQuery
         coEvery { getWeatherUseCase(cityQuery) } returns Result.failure(exception)
-
-        // When
-        viewModel.loadWeather(cityQuery)
 
         // Then
         viewModel.uiState.test {
