@@ -12,6 +12,7 @@ WeatherApp is a modern Android application built with Kotlin and Jetpack Compose
   * [Prerequisites](#prerequisites)
   * [Adding the API Key](#adding-the-api-key)
   * [Running the App](#running-the-app)
+  * [Screens](#screens)
 * [Workaround for Android Versions Below Pie (API < 28)](#workaround-for-android-versions-below-pie-api--28)
 
 ## Features
@@ -20,56 +21,6 @@ WeatherApp is a modern Android application built with Kotlin and Jetpack Compose
 * Modern, declarative UI built with Jetpack Compose.
 * Caches data locally for offline access using Room.
 * Asynchronous operations managed with Kotlin Coroutines.
-
-## Screens
-
-### Splash
-This screen displays an animation and performs 2 initial validations, one for network availability and the other for the API key, to verify that it is not empty or the placeholder
-<br/>
-<img src="readmeImages/screen_splashAnimation.gif" alt="splash screen animation" width="200"/>
-### Search
-This screen allows users to interact with the search bar and find the city they are interested in. It has 5 main states:
-#### Idle
-This state is the initial state when the user has not yet interacted with the app
-<br/>
-<img src="readmeImages/screen_searchIdle.png" alt="screen search idle state" width="200"/>
-
-#### Idle with recent searches
-In this state, the user has already done some searches that are displayed as recent searches to allow the user to choose one
-<br/>
-<img src="readmeImages/screen_idleRecentSearch.png" alt="screen idle with recent search" width="200"/>
-
-#### Loading
-The user is interacting with the search bar, and the app is fetching the data from the API
-<br/>
-<img src="readmeImages/screen_searchLoading.png" alt="screen loading" width="200"/>
-
-#### Success
-The user has successfully fetched the data from the API
-<br/>
-<img src="readmeImages/screen_searchSuccess.png" alt="screen success search" width="200"/>
-
-#### No results found
-No results were found for the text written inside the search bar 
-<br/>
-<img src="readmeImages/screen_searchNoResults.png" alt="screen no results" width="200"/>
-
-### Detail
-This screen shows the weather information for the selected city
-<br/>
-<img src="readmeImages/screen_details.png" alt="screen details" width="200"/>
-
-### Error screens
-There are also 2 screens to display basic errors to the users
-
-#### No internet connection
-<br/>
-<img src="readmeImages/screen_noInternetError.png" alt="screen no internet error" width="200"/>
-
-#### Unexpected/unknown error
-
-<br/>
-<img src="readmeImages/screen_unexpectedError.png" alt="screen unexpected error" width="200"/>
 
 ## Architecture
 
@@ -154,6 +105,56 @@ git clone git@github.com:jlbeltran94/WeatherApp.git
 3.  Let Android Studio sync the project and download all dependencies.
 4.  Select a run configuration (an emulator or a connected physical device).
 5.  Click the **Run** button (▶️) to build and install the app on your selected device.
+
+## Screens
+
+### Splash
+This screen displays an animation and performs 2 initial validations, one for network availability and the other for the API key, to verify that it is not empty or the placeholder
+<br/>
+<img src="readmeImages/screen_splashAnimation.gif" alt="splash screen animation" width="200"/>
+### Search
+This screen allows users to interact with the search bar and find the city they are interested in. It has 5 main states:
+#### Idle
+This state is the initial state when the user has not yet interacted with the app
+<br/>
+<img src="readmeImages/screen_searchIdle.png" alt="screen search idle state" width="200"/>
+
+#### Idle with recent searches
+In this state, the user has already done some searches that are displayed as recent searches to allow the user to choose one
+<br/>
+<img src="readmeImages/screen_idleRecentSearch.png" alt="screen idle with recent search" width="200"/>
+
+#### Loading
+The user is interacting with the search bar, and the app is fetching the data from the API
+<br/>
+<img src="readmeImages/screen_searchLoading.png" alt="screen loading" width="200"/>
+
+#### Success
+The user has successfully fetched the data from the API
+<br/>
+<img src="readmeImages/screen_searchSuccess.png" alt="screen success search" width="200"/>
+
+#### No results found
+No results were found for the text written inside the search bar 
+<br/>
+<img src="readmeImages/screen_searchNoResults.png" alt="screen no results" width="200"/>
+
+### Detail
+This screen shows the weather information for the selected city
+<br/>
+<img src="readmeImages/screen_details.png" alt="screen details" width="200"/>
+
+### Error screens
+There are also 2 screens to display basic errors to the users
+
+#### No internet connection
+<br/>
+<img src="readmeImages/screen_noInternetError.png" alt="screen no internet error" width="200"/>
+
+#### Unexpected/unknown error
+
+<br/>
+<img src="readmeImages/screen_unexpectedError.png" alt="screen unexpected error" width="200"/>
 
 ## Workaround for Android Versions Below Pie (API < 28)
 
