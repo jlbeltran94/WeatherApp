@@ -22,9 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -32,7 +29,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.jlbeltran94.weatherapp.R
 import com.jlbeltran94.weatherapp.domain.model.Weather
@@ -59,9 +55,11 @@ fun WeatherDetailScreen(
         is WeatherDetailUiState.Loading -> {
             WeatherDetailShimmer()
         }
+
         is WeatherDetailUiState.Success -> {
             WeatherDetailContent(weather = state.weather, onNavigateBack = onNavigateBack)
         }
+
         is WeatherDetailUiState.Error -> {
             onNavigateToError(state.errorType)
         }
@@ -74,63 +72,7 @@ fun WeatherDetailContent(weather: Weather, onNavigateBack: () -> Unit) {
     CollapsingToolbar(
         modifier = Modifier.testTag(TestTags.WEATHER_DETAIL_CONTENT),
         header = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Brush.verticalGradient(colors = listOf(SkyBlue, DarkBlue)))
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxSize().padding(top = AppTheme.dimens.toolbarHeight),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
-                ) {
-                    Text(
-                        text = stringResource(R.string.city_region_country, weather.cityName, weather.country),
-                        style = typography.headlineSmall,
-                        color = White,
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(AppTheme.dimens.spacingLarge))
-                    Text(
-                        text = stringResource(R.string.temperature_degrees, weather.temperature.toInt()),
-                        style = typography.displayLarge,
-                        fontWeight = FontWeight.Bold,
-                        color = White,
-                        modifier = Modifier.testTag(TestTags.DETAIL_TEMPERATURE)
-                    )
-                    Spacer(modifier = Modifier.height(AppTheme.dimens.spacingMedium))
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = weather.condition,
-                            style = typography.titleMedium,
-                            color = White,
-                            modifier = Modifier.testTag(TestTags.DETAIL_CONDITION)
-                        )
-                        AsyncImage(
-                            model = weather.conditionIcon.withProtocol(),
-                            contentDescription = weather.condition,
-                            modifier = Modifier.size(AppTheme.dimens.iconSizeMediumLarge)
-                        )
-                    }
-                    if (weather.highTemp != null && weather.lowTemp != null) {
-                        Spacer(modifier = Modifier.height(AppTheme.dimens.spacingMedium))
-                        Text(
-                            text = stringResource(
-                                R.string.high_low_temperature,
-                                weather.highTemp.toInt(),
-                                weather.lowTemp.toInt()
-                            ),
-                            style = typography.bodyLarge,
-                            color = White,
-                            modifier = Modifier.testTag(TestTags.DETAIL_HIGH_LOW)
-                        )
-                    }
-                }
-            }
+            HeaderDetailContent(weather)
         },
         content = {
             Column(
@@ -153,7 +95,11 @@ fun WeatherDetailContent(weather: Weather, onNavigateBack: () -> Unit) {
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(R.string.city_region_country, weather.cityName, weather.country),
+                        text = stringResource(
+                            R.string.city_region_country,
+                            weather.cityName,
+                            weather.country
+                        ),
                         color = White.copy(alpha = collapseFraction),
                         style = typography.titleLarge,
                         textAlign = TextAlign.Center,
@@ -175,6 +121,76 @@ fun WeatherDetailContent(weather: Weather, onNavigateBack: () -> Unit) {
         headerHeight = AppTheme.dimens.detailHeaderHeight,
         toolbarHeight = AppTheme.dimens.toolbarHeight
     )
+}
+
+@Composable
+private fun HeaderDetailContent(weather: Weather) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Brush.verticalGradient(colors = listOf(SkyBlue, DarkBlue)))
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = AppTheme.dimens.toolbarHeight),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            Text(
+                text = stringResource(
+                    R.string.city_region_country,
+                    weather.cityName,
+                    weather.country
+                ),
+                style = typography.headlineSmall,
+                color = White,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(AppTheme.dimens.spacingLarge))
+            Text(
+                text = stringResource(
+                    R.string.temperature_degrees,
+                    weather.temperature.toInt()
+                ),
+                style = typography.displayLarge,
+                fontWeight = FontWeight.Bold,
+                color = White,
+                modifier = Modifier.testTag(TestTags.DETAIL_TEMPERATURE)
+            )
+            Spacer(modifier = Modifier.height(AppTheme.dimens.spacingMedium))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = weather.condition,
+                    style = typography.titleMedium,
+                    color = White,
+                    modifier = Modifier.testTag(TestTags.DETAIL_CONDITION)
+                )
+                AsyncImage(
+                    model = weather.conditionIcon.withProtocol(),
+                    contentDescription = weather.condition,
+                    modifier = Modifier.size(AppTheme.dimens.iconSizeMediumLarge)
+                )
+            }
+            if (weather.highTemp != null && weather.lowTemp != null) {
+                Spacer(modifier = Modifier.height(AppTheme.dimens.spacingMedium))
+                Text(
+                    text = stringResource(
+                        R.string.high_low_temperature,
+                        weather.highTemp.toInt(),
+                        weather.lowTemp.toInt()
+                    ),
+                    style = typography.bodyLarge,
+                    color = White,
+                    modifier = Modifier.testTag(TestTags.DETAIL_HIGH_LOW)
+                )
+            }
+        }
+    }
 }
 
 @Composable

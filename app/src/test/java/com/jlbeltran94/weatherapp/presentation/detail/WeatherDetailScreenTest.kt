@@ -77,7 +77,11 @@ class WeatherDetailScreenTest {
                 uiState = WeatherDetailUiState.Success(weather)
             )
         }
-        composeTestRule.onNodeWithTag(TestTags.WEATHER_DETAIL_CONTENT).assertExists().assertIsDisplayed()
-        composeTestRule.onAllNodesWithText("${weather.cityName}, ${weather.country}", useUnmergedTree = true).onFirst().assertExists().assertIsDisplayed()
+        composeTestRule.onNodeWithTag(TestTags.WEATHER_DETAIL_CONTENT).assertExists()
+            .assertIsDisplayed()
+        composeTestRule.onAllNodesWithText(
+            "${weather.cityName}, ${weather.country}",
+            useUnmergedTree = true
+        ).onFirst().assertExists().assertIsDisplayed()
     }
 }

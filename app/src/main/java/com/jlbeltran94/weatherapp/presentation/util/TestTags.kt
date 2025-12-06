@@ -12,7 +12,6 @@ object TestTags {
     const val RECENT_SEARCH_ITEM = "RECENT_SEARCH_ITEM"
     const val SEARCH_SHIMMER = "SEARCH_SHIMMER"
 
-
     // Error Screens
     const val NO_NETWORK_SCREEN = "NO_NETWORK_SCREEN"
     const val UNEXPECTED_ERROR_SCREEN = "UNEXPECTED_ERROR_SCREEN"

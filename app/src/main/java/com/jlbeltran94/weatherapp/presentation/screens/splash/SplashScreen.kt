@@ -36,7 +36,6 @@ fun SplashScreen(
     onNavigateToSearch: () -> Unit,
     onNavigateToError: (ErrorType) -> Unit,
 ) {
-
     when (uiState) {
         is SplashUiState.Success -> onNavigateToSearch()
         is SplashUiState.Error -> onNavigateToError(uiState.errorType)
@@ -92,5 +91,4 @@ fun SplashScreen(
             }
         }
     }
-
 }

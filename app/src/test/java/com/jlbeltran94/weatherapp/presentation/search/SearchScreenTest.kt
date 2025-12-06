@@ -25,7 +25,6 @@ class SearchScreenTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-
     @Test
     fun `search screen test - idle state no recent searches`() {
         composeTestRule.setContent {

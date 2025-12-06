@@ -63,7 +63,12 @@ fun SearchScreen(
     }
 
     Scaffold(
-        snackbarHost = { SnackbarHost(modifier = Modifier.testTag(TestTags.ERROR_SNACKBAR), hostState = snackbarHostState) },
+        snackbarHost = {
+            SnackbarHost(
+                modifier = Modifier.testTag(TestTags.ERROR_SNACKBAR),
+                hostState = snackbarHostState
+            )
+        },
         topBar = {
             TopAppBar(
                 title = {

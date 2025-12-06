@@ -59,5 +59,4 @@ class SplashScreenTest {
         composeTestRule.onNodeWithTag(TestTags.SPLASH_LOADING).assertDoesNotExist()
         assertEquals(ErrorType.UNKNOWN, errorType)
     }
-
 }
