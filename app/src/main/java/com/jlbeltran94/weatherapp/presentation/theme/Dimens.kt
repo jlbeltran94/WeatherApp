@@ -32,7 +32,7 @@ data class Dimens(
     val fontLarge: TextUnit = 48.sp,
 
     val toolbarHeight: Dp = 80.dp,
-    val detailHeaderHeight: Dp = 300.dp,
+    val detailHeaderHeight: Dp = 200.dp,
 
     val hourlyItemWidth: Dp = 70.dp,
     val dailyItemDayWidth: Dp = 100.dp,
