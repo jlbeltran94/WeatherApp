@@ -12,20 +12,19 @@ import java.io.IOException
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
-    private val apiService: WeatherApiService,
-    private val apiKey: String
+    private val apiService: WeatherApiService
 ) : WeatherRepository {
 
     override suspend fun searchCities(query: String): Result<List<City>> {
         return safeApiCall {
-            val response = apiService.searchCities(apiKey, query)
+            val response = apiService.searchCities(query)
             response.map { it.toCity() }
         }
     }
 
     override suspend fun getWeather(cityQuery: String): Result<Weather> {
         return safeApiCall {
-            val response = apiService.getForecastWeather(apiKey, cityQuery, DAYS_IN_WEEK)
+            val response = apiService.getForecastWeather(cityQuery, DAYS_IN_WEEK)
             response.toWeather()
         }
     }

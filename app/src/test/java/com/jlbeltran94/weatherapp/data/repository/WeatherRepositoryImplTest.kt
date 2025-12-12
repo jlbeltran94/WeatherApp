@@ -24,12 +24,11 @@ class WeatherRepositoryImplTest {
 
     private lateinit var apiService: WeatherApiService
     private lateinit var weatherRepository: WeatherRepositoryImpl
-    private val apiKey = "test_api_key"
 
     @Before
     fun setUp() {
         apiService = mockk()
-        weatherRepository = WeatherRepositoryImpl(apiService, apiKey)
+        weatherRepository = WeatherRepositoryImpl(apiService)
     }
 
     @Test
@@ -46,19 +45,19 @@ class WeatherRepositoryImplTest {
                 url = "london-city-of-london-greater-london-united-kingdom"
             )
         )
-        coEvery { apiService.searchCities(apiKey, query) } returns searchResponse
+        coEvery { apiService.searchCities(query) } returns searchResponse
         val result = weatherRepository.searchCities(query)
         assertTrue(result.isSuccess)
         assertEquals(1, result.getOrNull()?.size)
         assertEquals("London", result.getOrNull()?.first()?.name)
-        coVerify(exactly = 1) { apiService.searchCities(apiKey, query) }
+        coVerify(exactly = 1) { apiService.searchCities(query) }
     }
 
     @Test
     fun `searchCities should return failure result on api error`() = runBlocking {
         val query = "London"
         val exception = IOException("Network failed")
-        coEvery { apiService.searchCities(apiKey, query) } throws exception
+        coEvery { apiService.searchCities(query) } throws exception
         val result = weatherRepository.searchCities(query)
         assertTrue(result.isFailure)
         assertTrue(result.exceptionOrNull() is DomainException.IOError)
@@ -68,19 +67,19 @@ class WeatherRepositoryImplTest {
     fun `getWeather should return success result on api success`() = runBlocking {
         val cityQuery = "London"
         val weatherResponse = mockWeatherResponseDto()
-        coEvery { apiService.getForecastWeather(apiKey, cityQuery, 7) } returns weatherResponse
+        coEvery { apiService.getForecastWeather(cityQuery, 7) } returns weatherResponse
         val result = weatherRepository.getWeather(cityQuery)
         assertTrue(result.isSuccess)
         assertEquals("London", result.getOrNull()?.cityName)
         assertEquals(15.0, result.getOrNull()?.temperature!!, 0.0)
-        coVerify(exactly = 1) { apiService.getForecastWeather(apiKey, cityQuery, 7) }
+        coVerify(exactly = 1) { apiService.getForecastWeather(cityQuery, 7) }
     }
 
     @Test
     fun `getWeather should return failure result on api error`() = runBlocking {
         val cityQuery = "London"
         val exception = IOException("Network failed")
-        coEvery { apiService.getForecastWeather(apiKey, cityQuery, 7) } throws exception
+        coEvery { apiService.getForecastWeather(cityQuery, 7) } throws exception
 
         val result = weatherRepository.getWeather(cityQuery)
 
