@@ -7,7 +7,6 @@ import com.jlbeltran94.weatherapp.data.remote.dto.DayDto
 import com.jlbeltran94.weatherapp.data.remote.dto.ForecastDayDto
 import com.jlbeltran94.weatherapp.data.remote.dto.ForecastDto
 import com.jlbeltran94.weatherapp.data.remote.dto.LocationDto
-import com.jlbeltran94.weatherapp.data.remote.dto.SearchResponseDto
 import com.jlbeltran94.weatherapp.data.remote.dto.WeatherResponseDto
 import com.jlbeltran94.weatherapp.domain.exception.DomainException
 import io.mockk.coEvery

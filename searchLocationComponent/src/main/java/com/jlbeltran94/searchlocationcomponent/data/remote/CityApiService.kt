@@ -1,6 +1,6 @@
-package com.jlbeltran94.weatherapp.data.remote
+package com.jlbeltran94.searchlocationcomponent.data.remote
 
-import com.jlbeltran94.weatherapp.data.remote.dto.SearchResponseDto
+import com.jlbeltran94.searchlocationcomponent.data.remote.dto.SearchResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

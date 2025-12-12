@@ -11,15 +11,14 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
-fun SearchResponseDto.toCity(): City {
+fun Weather.toCity(): City {
     return City(
-        id = id.toString(),
-        name = name,
+        id = "$cityName,$country",
+        name = cityName,
         region = region,
         country = country,
-        lat = lat,
-        lon = lon
+        lat = cityLat,
+        lon = cityLon
     )
 }
 
@@ -64,16 +63,7 @@ fun WeatherResponseDto.toWeather(): Weather {
     )
 }
 
-fun Weather.toCity(): City {
-    return City(
-        id = "$cityName,$country",
-        name = cityName,
-        region = region,
-        country = country,
-        lat = cityLat,
-        lon = cityLon
-    )
-}
+
 
 internal fun formatTime(timeString: String): String {
     return try {

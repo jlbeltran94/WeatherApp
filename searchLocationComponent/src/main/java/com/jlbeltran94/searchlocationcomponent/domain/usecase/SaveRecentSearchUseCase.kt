@@ -1,8 +1,5 @@
-package com.jlbeltran94.weatherapp.domain.usecase
+package com.jlbeltran94.searchlocationcomponent.domain.usecase
 
-import com.jlbeltran94.weatherapp.domain.model.City
-import com.jlbeltran94.weatherapp.domain.model.Weather
-import com.jlbeltran94.weatherapp.domain.repository.RecentSearchesRepository
 import javax.inject.Inject
 
 class SaveRecentSearchUseCase @Inject constructor(

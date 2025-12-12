@@ -34,12 +34,5 @@ object RepositoryModule {
         return RecentSearchesRepositoryImpl(recentSearchDao)
     }
 
-    @Provides
-    @Singleton
-    fun provideCityRepository(
-        apiService: CityApiService,
-        apiKey: String
-    ): CityRepository {
-        return CityRepositoryImpl(apiService, apiKey)
-    }
+
 }

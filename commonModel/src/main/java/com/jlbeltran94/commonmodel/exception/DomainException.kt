@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.domain.exception
+package com.jlbeltran94.commonmodel.exception
 
 import java.io.IOException
 

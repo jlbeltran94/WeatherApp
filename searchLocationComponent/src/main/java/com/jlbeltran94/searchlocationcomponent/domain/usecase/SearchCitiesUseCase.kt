@@ -1,7 +1,7 @@
-package com.jlbeltran94.weatherapp.domain.usecase
+package com.jlbeltran94.searchlocationcomponent.domain.usecase
 
-import com.jlbeltran94.weatherapp.domain.model.City
-import com.jlbeltran94.weatherapp.domain.repository.CityRepository
+import com.jlbeltran94.searchlocationcomponent.domain.model.City
+import com.jlbeltran94.searchlocationcomponent.domain.repository.CityRepository
 import javax.inject.Inject
 
 class SearchCitiesUseCase @Inject constructor(

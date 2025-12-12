@@ -6,7 +6,7 @@ import com.jlbeltran94.weatherapp.domain.repository.WeatherRepository
 import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.GetWeatherUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.SaveRecentSearchUseCase
-import com.jlbeltran94.weatherapp.domain.usecase.SearchCitiesUseCase
+//import com.jlbeltran94.weatherapp.domain.usecase.SearchCitiesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,11 +17,11 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @InstallIn(ViewModelComponent::class)
 object DomainModule {
 
-    @Provides
-    @ViewModelScoped
-    fun provideSearchCitiesUseCase(repository: CityRepository): SearchCitiesUseCase {
-        return SearchCitiesUseCase(repository)
-    }
+//    @Provides
+//    @ViewModelScoped
+//    fun provideSearchCitiesUseCase(repository: CityRepository): SearchCitiesUseCase {
+//        return SearchCitiesUseCase(repository)
+//    }
 
     @Provides
     @ViewModelScoped

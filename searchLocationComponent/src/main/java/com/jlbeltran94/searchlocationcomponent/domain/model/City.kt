@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.domain.model
+package com.jlbeltran94.searchlocationcomponent.domain.model
 
 data class City(
     val id: String,

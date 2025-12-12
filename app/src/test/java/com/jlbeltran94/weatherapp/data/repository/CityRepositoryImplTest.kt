@@ -1,15 +1,7 @@
 package com.jlbeltran94.weatherapp.data.repository
 
 import com.jlbeltran94.weatherapp.data.remote.CityApiService
-import com.jlbeltran94.weatherapp.data.remote.WeatherApiService
-import com.jlbeltran94.weatherapp.data.remote.dto.ConditionDto
-import com.jlbeltran94.weatherapp.data.remote.dto.CurrentDto
-import com.jlbeltran94.weatherapp.data.remote.dto.DayDto
-import com.jlbeltran94.weatherapp.data.remote.dto.ForecastDayDto
-import com.jlbeltran94.weatherapp.data.remote.dto.ForecastDto
-import com.jlbeltran94.weatherapp.data.remote.dto.LocationDto
 import com.jlbeltran94.weatherapp.data.remote.dto.SearchResponseDto
-import com.jlbeltran94.weatherapp.data.remote.dto.WeatherResponseDto
 import com.jlbeltran94.weatherapp.domain.exception.DomainException
 import io.mockk.coEvery
 import io.mockk.coVerify

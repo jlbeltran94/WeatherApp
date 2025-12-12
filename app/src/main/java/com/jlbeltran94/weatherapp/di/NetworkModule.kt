@@ -1,20 +1,12 @@
 package com.jlbeltran94.weatherapp.di
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.jlbeltran94.weatherapp.BuildConfig
 import com.jlbeltran94.weatherapp.data.remote.CityApiService
 import com.jlbeltran94.weatherapp.data.remote.WeatherApiService
-import com.jlbeltran94.weatherapp.presentation.util.extensions.withProtocol
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module

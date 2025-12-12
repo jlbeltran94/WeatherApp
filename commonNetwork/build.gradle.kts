@@ -55,6 +55,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":commonModel"))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

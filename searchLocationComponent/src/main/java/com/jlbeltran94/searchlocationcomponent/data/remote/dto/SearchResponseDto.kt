@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.data.remote.dto
+package com.jlbeltran94.searchlocationcomponent.data.remote.dto
 
 import kotlinx.serialization.Serializable
 
