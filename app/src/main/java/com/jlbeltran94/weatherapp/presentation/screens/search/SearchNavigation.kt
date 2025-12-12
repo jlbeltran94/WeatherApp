@@ -6,7 +6,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
+import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.searchlocationui.screen.SearchScreen
+import com.jlbeltran94.searchlocationui.screen.SearchViewModel
 import com.jlbeltran94.weatherapp.presentation.navigation.Screen
 
 fun NavGraphBuilder.addSearch(navController: NavHostController) {

@@ -6,8 +6,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
+import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.weatherapp.presentation.navigation.Screen
+import com.jlbeltran94.weatherdetailui.WeatherDetailScreen
+import com.jlbeltran94.weatherdetailui.WeatherDetailViewModel
 
 fun NavGraphBuilder.addDetail(navController: NavHostController) {
     composable(Screen.Detail.route) { backStackEntry ->

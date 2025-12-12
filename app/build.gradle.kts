@@ -74,6 +74,11 @@ detekt {
 
 dependencies {
     implementation(project(":commonNetwork"))
+    implementation(project(":searchLocationUI"))
+    implementation(project(":searchLocationComponent"))
+    implementation(project(":weatherDetailComponent"))
+    implementation(project(":weatherDetailUI"))
+    implementation(project(":commonUI"))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

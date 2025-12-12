@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="temperature_degrees">%d°C</string>
+    <string name="high_low_temperature">High:%1$d°C Low:%2$d°C</string>
+    <string name="hourly_forecast">Hourly Forecast</string>
+    <string name="seven_day_forecast">Weekly Forecast</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="wind_speed_value">%d kph</string>
+    <string name="humidity_value">%d%%</string>
+
+    <string name="loading">Loading...</string>
+    <string name="back_button_description">Back</string>
+    <string name="ok">Ok</string>
+    <string name="city_region_country">%1$s, %2$s</string>
+</resources>

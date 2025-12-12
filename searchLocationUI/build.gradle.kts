@@ -46,6 +46,7 @@ android {
 dependencies {
     implementation(project(":searchLocationComponent"))
     implementation(project(":commonUI"))
+    implementation(project(":commonModel"))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -1,0 +1,9 @@
+package com.jlbeltran94.weatherdetailcomponent.data.remote.dto
+
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class ConditionDto(
+    val text: String,
+    val icon: String
+)

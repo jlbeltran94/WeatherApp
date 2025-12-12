@@ -20,8 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
 import com.jlbeltran94.weatherapp.presentation.util.TestTags
 
 @Composable

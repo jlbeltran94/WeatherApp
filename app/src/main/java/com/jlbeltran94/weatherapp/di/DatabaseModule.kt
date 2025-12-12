@@ -2,8 +2,8 @@ package com.jlbeltran94.weatherapp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.jlbeltran94.searchlocationcomponent.data.local.dao.RecentSearchDao
 import com.jlbeltran94.weatherapp.data.local.WeatherDatabase
-import com.jlbeltran94.weatherapp.data.local.dao.RecentSearchDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

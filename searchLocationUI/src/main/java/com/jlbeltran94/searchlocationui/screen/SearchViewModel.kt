@@ -2,12 +2,12 @@ package com.jlbeltran94.searchlocationui.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jlbeltran94.weatherapp.domain.exception.DomainException
-import com.jlbeltran94.weatherapp.domain.model.City
-import com.jlbeltran94.weatherapp.domain.model.RecentSearch
-import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
-import com.jlbeltran94.weatherapp.domain.usecase.SearchCitiesUseCase
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
+import com.jlbeltran94.commonmodel.exception.DomainException
+import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.searchlocationcomponent.domain.model.City
+import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
+import com.jlbeltran94.searchlocationcomponent.domain.usecase.GetRecentSearchesUseCase
+import com.jlbeltran94.searchlocationcomponent.domain.usecase.SearchCitiesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
@@ -87,9 +87,11 @@ class SearchViewModel @Inject constructor(
                             }
                             _uiState.value = SearchUiState.NoResults
                         }
+
                         is DomainException.IOError -> {
                             _uiState.value = SearchUiState.Error(ErrorType.IO_ERROR)
                         }
+
                         else -> _uiState.value = SearchUiState.Error(ErrorType.UNKNOWN)
                     }
                 }

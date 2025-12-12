@@ -21,13 +21,13 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.commonui.theme.AppTheme.dimens
+import com.jlbeltran94.commonui.theme.DarkBlue
+import com.jlbeltran94.commonui.theme.SkyBlue
+import com.jlbeltran94.commonui.theme.White
 import com.jlbeltran94.weatherapp.BuildConfig
 import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.presentation.theme.DarkBlue
-import com.jlbeltran94.weatherapp.presentation.theme.SkyBlue
-import com.jlbeltran94.weatherapp.presentation.theme.White
 import com.jlbeltran94.weatherapp.presentation.util.TestTags
 
 @Composable

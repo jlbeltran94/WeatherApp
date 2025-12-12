@@ -28,12 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import coil.compose.AsyncImage
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.domain.model.RecentSearch
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
-import com.jlbeltran94.weatherapp.presentation.util.extensions.withProtocol
-import kotlin.collections.isNotEmpty
+import com.jlbeltran94.searchlocationui.R
 
 @Composable
 fun ResentSearch(
@@ -72,7 +67,7 @@ fun RecentSearchItem(
             .fillMaxWidth()
             .padding(vertical = dimens.paddingSmall)
             .clickable(onClick = onClick)
-            .testTag(TestTags.RECENT_SEARCH_ITEM),
+            .testTag("TestTags.RECENT_SEARCH_ITEM"),
         elevation = CardDefaults.cardElevation(defaultElevation = dimens.spacingSmall)
     ) {
         Row(
@@ -82,7 +77,7 @@ fun RecentSearchItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
-                model = recentSearch.conditionIcon.withProtocol(),
+                model = "https:${recentSearch.conditionIcon}",
                 error = painterResource(R.drawable.ic_image_error),
                 contentDescription = recentSearch.condition,
                 modifier = Modifier.size(dimens.iconSizeLarge)

@@ -2,8 +2,8 @@ package com.jlbeltran94.weatherapp.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.jlbeltran94.weatherapp.data.local.dao.RecentSearchDao
-import com.jlbeltran94.weatherapp.data.local.entity.RecentSearchEntity
+import com.jlbeltran94.searchlocationcomponent.data.local.dao.RecentSearchDao
+import com.jlbeltran94.searchlocationcomponent.data.local.entity.RecentSearchEntity
 
 @Database(
     entities = [RecentSearchEntity::class],

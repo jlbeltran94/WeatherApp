@@ -20,16 +20,15 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.domain.model.RecentSearch
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.screens.search.components.CitiesResults
-import com.jlbeltran94.weatherapp.presentation.screens.search.components.NoResultsFound
-import com.jlbeltran94.weatherapp.presentation.screens.search.components.ResentSearch
-import com.jlbeltran94.weatherapp.presentation.screens.search.components.SearchBar
-import com.jlbeltran94.weatherapp.presentation.screens.search.components.SearchShimmer
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.commonui.theme.AppTheme.dimens
+import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
+import com.jlbeltran94.searchlocationui.R
+import com.jlbeltran94.searchlocationui.screen.components.CitiesResults
+import com.jlbeltran94.searchlocationui.screen.components.NoResultsFound
+import com.jlbeltran94.searchlocationui.screen.components.ResentSearch
+import com.jlbeltran94.searchlocationui.screen.components.SearchBar
+import com.jlbeltran94.searchlocationui.screen.components.SearchShimmer
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 
@@ -65,7 +64,7 @@ fun SearchScreen(
     Scaffold(
         snackbarHost = {
             SnackbarHost(
-                modifier = Modifier.testTag(TestTags.ERROR_SNACKBAR),
+                modifier = Modifier.testTag("TestTags.ERROR_SNACKBAR"),
                 hostState = snackbarHostState
             )
         },

@@ -18,9 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.commonui.theme.AppTheme.dimens
+import com.jlbeltran94.searchlocationui.R
 
 @Composable
 fun SearchBar(
@@ -33,7 +32,7 @@ fun SearchBar(
         onValueChange = onSearchQueryChange,
         modifier = Modifier
             .fillMaxWidth()
-            .testTag(TestTags.SEARCH_INPUT),
+            .testTag("TestTags.SEARCH_INPUT"),
         placeholder = { Text(stringResource(R.string.search_placeholder)) },
         leadingIcon = {
             Icon(

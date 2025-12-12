@@ -20,16 +20,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.searchlocationui.R
 
 @Composable
 fun NoResultsFound() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .testTag(TestTags.NO_RESULTS_FOUND),
+            .testTag("TestTags.NO_RESULTS_FOUND"),
         contentAlignment = Alignment.Center
     ) {
         Column(

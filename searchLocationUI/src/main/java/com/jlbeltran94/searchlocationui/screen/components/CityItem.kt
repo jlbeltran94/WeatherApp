@@ -28,10 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.searchlocationcomponent.domain.model.City
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.domain.model.City
-import com.jlbeltran94.weatherapp.presentation.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.searchlocationui.R
 
 @Composable
 fun CitiesResults(
@@ -62,7 +59,7 @@ fun CityItem(
             .fillMaxWidth()
             .padding(vertical = dimens.paddingSmall)
             .clickable(onClick = onClick)
-            .testTag(TestTags.CITY_ITEM),
+            .testTag("TestTags.CITY_ITEM"),
         elevation = CardDefaults.cardElevation(defaultElevation = dimens.spacingSmall)
     ) {
         Row(
