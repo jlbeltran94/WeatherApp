@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.screens.splash
+package com.jlbeltran94.weatherapp.presentation.navigation
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -8,7 +8,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.jlbeltran94.commonui.ErrorType
-import com.jlbeltran94.weatherapp.presentation.navigation.Screen
+import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashScreen
+import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashViewModel
 
 fun NavGraphBuilder.addSplash(navController: NavHostController) {
     composable(Screen.Splash.route) {

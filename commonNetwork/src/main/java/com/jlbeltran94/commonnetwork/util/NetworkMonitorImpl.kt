@@ -1,10 +1,9 @@
-package com.jlbeltran94.weatherapp.data.util
+package com.jlbeltran94.commonnetwork.util
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.jlbeltran94.weatherapp.domain.util.NetworkMonitor
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton

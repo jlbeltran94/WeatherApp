@@ -1,9 +1,10 @@
-package com.jlbeltran94.weatherapp.presentation.screens.error
+package com.jlbeltran94.weatherapp.presentation.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.jlbeltran94.weatherapp.presentation.navigation.Screen
+import com.jlbeltran94.weatherapp.presentation.screens.error.NoNetworkScreen
+import com.jlbeltran94.weatherapp.presentation.screens.error.UnexpectedErrorScreen
 
 fun NavGraphBuilder.addErrorScreens(navController: NavHostController) {
     composable(Screen.NoNetwork.route) {

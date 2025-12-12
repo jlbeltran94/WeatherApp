@@ -3,6 +3,9 @@ package com.jlbeltran94.commonnetwork.di
 import android.os.Build
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.jlbeltran94.commonnetwork.BuildConfig
+import com.jlbeltran94.commonnetwork.util.NetworkMonitor
+import com.jlbeltran94.commonnetwork.util.NetworkMonitorImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,7 +56,6 @@ object NetworkModule {
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }
-
 }
 
 fun String.withProtocol(): String {

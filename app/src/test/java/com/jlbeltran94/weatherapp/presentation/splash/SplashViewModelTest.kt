@@ -1,7 +1,7 @@
 package com.jlbeltran94.weatherapp.presentation.splash
 
 import app.cash.turbine.test
-import com.jlbeltran94.weatherapp.domain.util.NetworkMonitor
+import com.jlbeltran94.commonnetwork.util.NetworkMonitor
 import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
 import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashUiState
 import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashViewModel

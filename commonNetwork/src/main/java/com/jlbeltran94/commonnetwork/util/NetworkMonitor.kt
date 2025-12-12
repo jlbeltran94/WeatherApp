@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.domain.util
+package com.jlbeltran94.commonnetwork.util
 
 interface NetworkMonitor {
     fun isNetworkAvailable(): Boolean

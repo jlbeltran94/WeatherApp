@@ -7,6 +7,8 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
+import com.jlbeltran94.searchlocationcomponent.domain.usecase.GetRecentSearchesUseCase
+import com.jlbeltran94.searchlocationcomponent.domain.usecase.SearchCitiesUseCase
 import com.jlbeltran94.weatherapp.MainActivity
 import com.jlbeltran94.weatherapp.domain.model.City
 import com.jlbeltran94.weatherapp.domain.model.Weather
@@ -14,6 +16,7 @@ import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.GetWeatherUseCase
 import com.jlbeltran94.weatherapp.domain.usecase.SearchCitiesUseCase
 import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.weatherdetailcomponent.domain.usecase.GetWeatherUseCase
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.coEvery

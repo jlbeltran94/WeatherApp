@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.screens.detail
+package com.jlbeltran94.weatherapp.presentation.navigation
 
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -7,7 +7,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.jlbeltran94.commonui.ErrorType
-import com.jlbeltran94.weatherapp.presentation.navigation.Screen
 import com.jlbeltran94.weatherdetailui.WeatherDetailScreen
 import com.jlbeltran94.weatherdetailui.WeatherDetailViewModel
 

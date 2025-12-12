@@ -3,7 +3,7 @@ package com.jlbeltran94.weatherapp.presentation.screens.splash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jlbeltran94.commonui.ErrorType
-import com.jlbeltran94.weatherapp.domain.util.NetworkMonitor
+import com.jlbeltran94.commonnetwork.util.NetworkMonitor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
