@@ -1,9 +1,12 @@
 package com.jlbeltran94.weatherapp.di
 
 import com.jlbeltran94.weatherapp.data.local.dao.RecentSearchDao
+import com.jlbeltran94.weatherapp.data.remote.CityApiService
 import com.jlbeltran94.weatherapp.data.remote.WeatherApiService
+import com.jlbeltran94.weatherapp.data.repository.CityRepositoryImpl
 import com.jlbeltran94.weatherapp.data.repository.RecentSearchesRepositoryImpl
 import com.jlbeltran94.weatherapp.data.repository.WeatherRepositoryImpl
+import com.jlbeltran94.weatherapp.domain.repository.CityRepository
 import com.jlbeltran94.weatherapp.domain.repository.RecentSearchesRepository
 import com.jlbeltran94.weatherapp.domain.repository.WeatherRepository
 import dagger.Module
@@ -29,5 +32,14 @@ object RepositoryModule {
     @Singleton
     fun provideRecentSearchesRepository(recentSearchDao: RecentSearchDao): RecentSearchesRepository {
         return RecentSearchesRepositoryImpl(recentSearchDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCityRepository(
+        apiService: CityApiService,
+        apiKey: String
+    ): CityRepository {
+        return CityRepositoryImpl(apiService, apiKey)
     }
 }

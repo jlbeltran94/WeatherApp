@@ -15,14 +15,6 @@ class WeatherRepositoryImpl @Inject constructor(
     private val apiService: WeatherApiService,
     private val apiKey: String
 ) : WeatherRepository {
-
-    override suspend fun searchCities(query: String): Result<List<City>> {
-        return safeApiCall {
-            val response = apiService.searchCities(apiKey, query)
-            response.map { it.toCity() }
-        }
-    }
-
     override suspend fun getWeather(cityQuery: String): Result<Weather> {
         return safeApiCall {
             val response = apiService.getForecastWeather(apiKey, cityQuery, DAYS_IN_WEEK)
@@ -30,20 +22,19 @@ class WeatherRepositoryImpl @Inject constructor(
         }
     }
 
-    private suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<T> {
-        return try {
-            Result.success(apiCall())
-        } catch (e: HttpException) {
-            val errorMessage = e.response()?.errorBody()?.string()
-            Result.failure(DomainException.ApiError(e.code(), errorMessage, e))
-        } catch (e: IOException) {
-            Result.failure(DomainException.IOError(e))
-        } catch (e: Exception) {
-            Result.failure(DomainException.UnknownError(e))
-        }
-    }
-
     companion object {
         const val DAYS_IN_WEEK = 7
+    }
+}
+suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<T> {
+    return try {
+        Result.success(apiCall())
+    } catch (e: HttpException) {
+        val errorMessage = e.response()?.errorBody()?.string()
+        Result.failure(DomainException.ApiError(e.code(), errorMessage, e))
+    } catch (e: IOException) {
+        Result.failure(DomainException.IOError(e))
+    } catch (e: Exception) {
+        Result.failure(DomainException.UnknownError(e))
     }
 }

@@ -21,3 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "WeatherApp"
 include(":app")
+include(":weatherDetailComponent")
+include(":searchLocationComponent")
+include(":commonNetwork")
+include(":commonUI")
+include(":searchLocationUI")
+include(":weatherDetailUI")

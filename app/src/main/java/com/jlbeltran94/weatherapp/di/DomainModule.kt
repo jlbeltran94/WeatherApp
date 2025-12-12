@@ -1,5 +1,6 @@
 package com.jlbeltran94.weatherapp.di
 
+import com.jlbeltran94.weatherapp.domain.repository.CityRepository
 import com.jlbeltran94.weatherapp.domain.repository.RecentSearchesRepository
 import com.jlbeltran94.weatherapp.domain.repository.WeatherRepository
 import com.jlbeltran94.weatherapp.domain.usecase.GetRecentSearchesUseCase
@@ -18,7 +19,7 @@ object DomainModule {
 
     @Provides
     @ViewModelScoped
-    fun provideSearchCitiesUseCase(repository: WeatherRepository): SearchCitiesUseCase {
+    fun provideSearchCitiesUseCase(repository: CityRepository): SearchCitiesUseCase {
         return SearchCitiesUseCase(repository)
     }
 

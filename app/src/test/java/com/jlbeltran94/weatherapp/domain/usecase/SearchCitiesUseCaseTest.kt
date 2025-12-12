@@ -1,7 +1,7 @@
 package com.jlbeltran94.weatherapp.domain.usecase
 
 import com.jlbeltran94.weatherapp.domain.model.City
-import com.jlbeltran94.weatherapp.domain.repository.WeatherRepository
+import com.jlbeltran94.weatherapp.domain.repository.CityRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -13,13 +13,13 @@ import org.junit.Test
 
 class SearchCitiesUseCaseTest {
 
-    private lateinit var weatherRepository: WeatherRepository
+    private lateinit var cityRepository: CityRepository
     private lateinit var searchCitiesUseCase: SearchCitiesUseCase
 
     @Before
     fun setUp() {
-        weatherRepository = mockk()
-        searchCitiesUseCase = SearchCitiesUseCase(weatherRepository)
+        cityRepository = mockk()
+        searchCitiesUseCase = SearchCitiesUseCase(cityRepository)
     }
 
     @Test
@@ -27,11 +27,11 @@ class SearchCitiesUseCaseTest {
         val query = "London"
         val cities = listOf(City("1", "London", "", "UK", 0.0, 0.0))
         val successResult = Result.success(cities)
-        coEvery { weatherRepository.searchCities(query) } returns successResult
+        coEvery { cityRepository.searchCities(query) } returns successResult
 
         val result = searchCitiesUseCase(query)
 
-        coVerify(exactly = 1) { weatherRepository.searchCities(query) }
+        coVerify(exactly = 1) { cityRepository.searchCities(query) }
         assertEquals(successResult, result)
     }
 
@@ -40,11 +40,11 @@ class SearchCitiesUseCaseTest {
         val query = "London"
         val exception = RuntimeException("Network error")
         val failureResult = Result.failure<List<City>>(exception)
-        coEvery { weatherRepository.searchCities(query) } returns failureResult
+        coEvery { cityRepository.searchCities(query) } returns failureResult
 
         val result = searchCitiesUseCase(query)
 
-        coVerify(exactly = 1) { weatherRepository.searchCities(query) }
+        coVerify(exactly = 1) { cityRepository.searchCities(query) }
         assertTrue(result.isFailure)
         assertEquals(exception, result.exceptionOrNull())
     }
