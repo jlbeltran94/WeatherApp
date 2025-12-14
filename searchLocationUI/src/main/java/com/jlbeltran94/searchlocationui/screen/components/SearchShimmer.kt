@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.testTag
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.components.rememberShimmerBrush
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 
@@ -29,7 +30,7 @@ fun SearchShimmer() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .testTag("TestTags.SEARCH_SHIMMER")
+            .testTag(TestTags.SEARCH_SHIMMER)
     ) {
         items(8) {
             ShimmerCityItem(brush = brush)

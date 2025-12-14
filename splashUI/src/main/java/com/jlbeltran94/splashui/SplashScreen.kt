@@ -22,6 +22,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.commonui.theme.DarkBlue
 import com.jlbeltran94.commonui.theme.SkyBlue
@@ -45,7 +46,7 @@ fun SplashScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Brush.verticalGradient(colors = listOf(SkyBlue, DarkBlue)))
-                        .testTag("TestTags.SPLASH_LOADING"),
+                        .testTag(TestTags.SPLASH_LOADING),
                     contentAlignment = Alignment.Center
                 ) {
                     Column(

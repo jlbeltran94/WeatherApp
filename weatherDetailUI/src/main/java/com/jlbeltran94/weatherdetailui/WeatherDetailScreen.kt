@@ -39,6 +39,7 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import com.jlbeltran94.commonnetwork.di.withProtocol
 import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.theme.AppTheme
 import com.jlbeltran94.commonui.theme.DarkBlue
 import com.jlbeltran94.commonui.theme.SkyBlue
@@ -102,7 +103,7 @@ private fun HeaderDetailContent(weather: Weather) {
                 style = typography.displayLarge,
                 fontWeight = FontWeight.Bold,
                 color = White,
-                modifier = Modifier.testTag("TestTags.DETAIL_TEMPERATURE")
+                modifier = Modifier.testTag(TestTags.DETAIL_TEMPERATURE)
             )
             Spacer(modifier = Modifier.height(AppTheme.dimens.spacingMedium))
             Row(
@@ -114,7 +115,7 @@ private fun HeaderDetailContent(weather: Weather) {
                     text = weather.condition,
                     style = typography.titleMedium,
                     color = White,
-                    modifier = Modifier.testTag("TestTags.DETAIL_CONDITION")
+                    modifier = Modifier.testTag(TestTags.DETAIL_CONDITION)
                 )
                 AsyncImage(
                     model = weather.conditionIcon.withProtocol(),
@@ -132,7 +133,7 @@ private fun HeaderDetailContent(weather: Weather) {
                     ),
                     style = typography.bodyLarge,
                     color = White,
-                    modifier = Modifier.testTag("TestTags.DETAIL_HIGH_LOW")
+                    modifier = Modifier.testTag(TestTags.DETAIL_HIGH_LOW)
                 )
             }
         }
@@ -170,7 +171,7 @@ fun WeatherDetailContent(weather: Weather, onNavigateBack: () -> Unit) {
     val scrollState = scrollBehavior.state
 
     Scaffold(
-        modifier = Modifier.testTag("TestTags.WEATHER_DETAIL_CONTENT"),
+        modifier = Modifier.testTag(TestTags.WEATHER_DETAIL_CONTENT),
         topBar = {
             Column(
                 modifier = Modifier

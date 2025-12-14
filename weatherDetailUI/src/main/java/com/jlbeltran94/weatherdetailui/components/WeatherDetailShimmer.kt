@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.components.rememberShimmerBrush
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.commonui.theme.DarkBlue
@@ -41,7 +42,7 @@ fun WeatherDetailShimmer() {
                         colors = listOf(SkyBlue.copy(alpha = 0.6f), DarkBlue.copy(alpha = 0.6f))
                     )
                 )
-                .testTag("TestTags.WEATHER_DETAIL_SHIMMER")
+                .testTag(TestTags.WEATHER_DETAIL_SHIMMER)
         ) {
             Column(
                 modifier = Modifier

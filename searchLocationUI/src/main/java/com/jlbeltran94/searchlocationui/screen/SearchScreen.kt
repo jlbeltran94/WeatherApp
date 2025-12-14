@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
 import com.jlbeltran94.searchlocationui.R
@@ -64,7 +65,7 @@ fun SearchScreen(
     Scaffold(
         snackbarHost = {
             SnackbarHost(
-                modifier = Modifier.testTag("TestTags.ERROR_SNACKBAR"),
+                modifier = Modifier.testTag(TestTags.ERROR_SNACKBAR),
                 hostState = snackbarHostState
             )
         },

@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.commonui.R as CommonR
 
@@ -31,7 +32,7 @@ fun NoNetworkScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(dimens.paddingLarge)
-            .testTag("TestTags.NO_NETWORK_SCREEN"),
+            .testTag(TestTags.NO_NETWORK_SCREEN),
         contentAlignment = Alignment.Center
     ) {
         Column(

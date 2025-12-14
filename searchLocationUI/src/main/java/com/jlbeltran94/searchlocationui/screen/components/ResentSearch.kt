@@ -26,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import coil.compose.AsyncImage
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
 import com.jlbeltran94.searchlocationui.R
@@ -67,7 +68,7 @@ fun RecentSearchItem(
             .fillMaxWidth()
             .padding(vertical = dimens.paddingSmall)
             .clickable(onClick = onClick)
-            .testTag("TestTags.RECENT_SEARCH_ITEM"),
+            .testTag(TestTags.RECENT_SEARCH_ITEM),
         elevation = CardDefaults.cardElevation(defaultElevation = dimens.spacingSmall)
     ) {
         Row(

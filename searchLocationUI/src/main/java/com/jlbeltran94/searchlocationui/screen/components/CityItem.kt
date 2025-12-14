@@ -26,6 +26,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.jlbeltran94.commonui.TestTags
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.searchlocationcomponent.domain.model.City
 import com.jlbeltran94.searchlocationui.R
@@ -59,7 +60,7 @@ fun CityItem(
             .fillMaxWidth()
             .padding(vertical = dimens.paddingSmall)
             .clickable(onClick = onClick)
-            .testTag("TestTags.CITY_ITEM"),
+            .testTag(TestTags.CITY_ITEM),
         elevation = CardDefaults.cardElevation(defaultElevation = dimens.spacingSmall)
     ) {
         Row(
