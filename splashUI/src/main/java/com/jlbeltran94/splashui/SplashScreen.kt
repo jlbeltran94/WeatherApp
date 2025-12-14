@@ -29,6 +29,7 @@ import com.jlbeltran94.commonui.theme.White
 
 @Composable
 fun SplashScreen(
+    versionName: String,
     uiState: SplashUiState,
     onNavigateToSearch: () -> Unit,
     onNavigateToError: (ErrorType) -> Unit,
@@ -78,7 +79,7 @@ fun SplashScreen(
                         Text(
                             text = stringResource(
                                 R.string.splash_version,
-                                BuildConfig.VERSION_NAME
+                                versionName
                             ),
                             fontSize = dimens.fontSmall,
                             color = White,

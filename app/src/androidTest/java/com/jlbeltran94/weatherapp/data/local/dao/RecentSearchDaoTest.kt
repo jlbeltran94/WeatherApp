@@ -2,8 +2,9 @@ package com.jlbeltran94.weatherapp.data.local.dao
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
-import com.jlbeltran94.weatherapp.data.local.WeatherDatabase
-import com.jlbeltran94.weatherapp.data.local.entity.RecentSearchEntity
+import com.jlbeltran94.database.WeatherDatabase
+import com.jlbeltran94.searchlocationcomponent.data.local.dao.RecentSearchDao
+import com.jlbeltran94.searchlocationcomponent.data.local.entity.RecentSearchEntity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.flow.first
@@ -42,15 +43,15 @@ class RecentSearchDaoTest {
 
     @Test
     fun insertAndGetRecentSearches() = runBlocking {
-        
+
         val search1 = RecentSearchEntity("1", "London", "", "UK", 10.0, "Cloudy", "", 1000L)
         val search2 = RecentSearchEntity("2", "Paris", "", "France", 15.0, "Sunny", "", 2000L)
 
-        
+
         recentSearchDao.insertRecentSearch(search1)
         recentSearchDao.insertRecentSearch(search2)
 
-        
+
         val searches = recentSearchDao.getRecentSearches().first()
         assertEquals(2, searches.size)
         assertEquals(search2, searches[0]) // Should be most recent
@@ -59,15 +60,15 @@ class RecentSearchDaoTest {
 
     @Test
     fun insertDuplicateReplacesExisting() = runBlocking {
-        
+
         val search1 = RecentSearchEntity("1", "London", "", "UK", 10.0, "Cloudy", "", 1000L)
         val search2 = RecentSearchEntity("1", "London", "", "UK", 15.0, "Sunny", "", 2000L)
 
-        
+
         recentSearchDao.insertRecentSearch(search1)
         recentSearchDao.insertRecentSearch(search2)
 
-        
+
         val searches = recentSearchDao.getRecentSearches().first()
         assertEquals(1, searches.size)
         assertEquals(search2, searches.first()) // The newer one should have replaced the old one

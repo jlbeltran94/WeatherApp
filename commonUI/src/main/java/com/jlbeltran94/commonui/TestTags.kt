@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.util
+package com.jlbeltran94.commonui
 
 object TestTags {
 

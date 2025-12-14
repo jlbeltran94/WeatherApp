@@ -1,7 +1,5 @@
-import java.util.Properties
-
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
@@ -11,33 +9,24 @@ plugins {
 }
 
 android {
-    namespace = "com.jlbeltran94.weatherapp"
-    compileSdk = 36
+    namespace = "com.jlbeltran94.errorui"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
-        applicationId = "com.jlbeltran94.weatherapp"
         minSdk = 21
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
-        testInstrumentationRunner = "com.jlbeltran94.weatherapp.CustomTestRunner"
-
-        val properties = Properties()
-        val localPropertiesFile = rootProject.file("local.properties")
-        if (localPropertiesFile.exists()) {
-            properties.load(localPropertiesFile.inputStream())
-        }
-        val apiKey = properties.getProperty("WEATHER_API_KEY", "")
-        buildConfigField("String", "WEATHER_API_KEY", "\"$apiKey\"")
-        buildConfigField("String", "WEATHER_API_URL", "\"//api.weatherapi.com/v1/\"")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -48,41 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
-    packaging {
-        resources {
-            pickFirsts.add("META-INF/LICENSE.md")
-            pickFirsts.add("META-INF/LICENSE-notice.md")
-            pickFirsts.add("META-INF/AL2.0")
-            pickFirsts.add("META-INF/LGPL2.1")
-        }
-    }
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-        }
-    }
-}
-
-detekt {
-    buildUponDefaultConfig = true
-    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
 }
 
 dependencies {
-    implementation(project(":commonNetwork"))
     implementation(project(":commonUI"))
-    implementation(project(":commonModel"))
-    implementation(project(":database"))
-    implementation(project(":searchLocationUI"))
-    implementation(project(":searchLocationComponent"))
-    implementation(project(":weatherDetailComponent"))
-    implementation(project(":weatherDetailUI"))
-    implementation(project(":splashUI"))
-    implementation(project(":errorUI"))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

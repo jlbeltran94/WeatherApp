@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.screens.error
+package com.jlbeltran94.errorui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -21,18 +21,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.jlbeltran94.commonui.theme.AppTheme.dimens
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.commonui.R as CommonR
 
 @Composable
-fun NoNetworkScreen(
+fun UnexpectedErrorScreen(
     onRetry: () -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(dimens.paddingLarge)
-            .testTag(TestTags.NO_NETWORK_SCREEN),
+            .testTag("TestTags.UNEXPECTED_ERROR_SCREEN"),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -40,7 +39,7 @@ fun NoNetworkScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_no_internet),
+                painter = painterResource(R.drawable.ic_unexpected_error),
                 contentDescription = null,
                 modifier = Modifier.size(dimens.iconSizeLarge)
             )
@@ -48,7 +47,7 @@ fun NoNetworkScreen(
             Spacer(modifier = Modifier.padding(dimens.spacingLarge))
 
             Text(
-                text = stringResource(id = R.string.no_network_title),
+                text = stringResource(id = R.string.unexpected_error_title),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = dimens.paddingMedium),
@@ -56,7 +55,7 @@ fun NoNetworkScreen(
             )
 
             Text(
-                text = stringResource(id = R.string.no_network_description),
+                text = stringResource(id = R.string.unexpected_error_description),
                 style = MaterialTheme.typography.bodyLarge,
                 color = Color.Gray,
                 modifier = Modifier.padding(bottom = dimens.paddingLarge),
@@ -67,7 +66,7 @@ fun NoNetworkScreen(
                 onClick = onRetry,
                 modifier = Modifier.padding(horizontal = dimens.paddingLarge)
             ) {
-                Text(stringResource(id = R.string.ok))
+                Text(stringResource(id = CommonR.string.ok))
             }
         }
     }

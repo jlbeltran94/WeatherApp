@@ -7,7 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
 import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashScreen
 import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashUiState
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.commonui.TestTags
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule

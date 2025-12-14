@@ -2,10 +2,10 @@ package com.jlbeltran94.weatherapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.jlbeltran94.weatherapp.data.local.WeatherDatabase
+import com.jlbeltran94.database.DatabaseModule
+import com.jlbeltran94.database.WeatherDatabase
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn

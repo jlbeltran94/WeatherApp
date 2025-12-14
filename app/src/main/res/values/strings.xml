@@ -1,28 +1,4 @@
 <resources>
-    <!-- General -->
-    <string name="loading">Loading...</string>
-    <string name="back_button_description">Back</string>
-    <string name="ok">Ok</string>
-    <string name="city_region_country">%1$s, %2$s</string>
 
-    <!-- Weather Details -->
-
-
-    <!-- Search Screen -->
-    <string name="search_header">Search</string>
-    <string name="search_placeholder">Search for a city</string>
-    <string name="search_content_description">Search</string>
-    <string name="clear_content_description">Clear</string>
-    <string name="recent_locations">Recent Locations</string>
-    <string name="searching">Searching...</string>
-    <string name="no_cities_found">No Cities Found</string>
-    <string name="no_cities_found_description">We couldn\'t find any results for your search. Please check the spelling or try a different city.</string>
-    <string name="recent_search_details">%1$d°C, %2$s</string>
-
-    <!-- Error Screens -->
-    <string name="no_network_title">No Internet Connection</string>
-    <string name="no_network_description">Couldn\'t connect to our servers. Please check your network settings.</string>
-    <string name="unexpected_error_title">An unexpected error occurred.</string>
-    <string name="unexpected_error_description">We\'re having trouble connecting to our servers. Please check your internet connection and try again.</string>
 
 </resources>

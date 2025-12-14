@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.splashui.SplashScreen
 import com.jlbeltran94.splashui.SplashViewModel
+import com.jlbeltran94.weatherapp.BuildConfig
 
 fun NavGraphBuilder.addSplash(navController: NavHostController) {
     composable(Screen.Splash.route) {
@@ -19,6 +20,7 @@ fun NavGraphBuilder.addSplash(navController: NavHostController) {
             viewModel.performValidations()
         }
         SplashScreen(
+            versionName = BuildConfig.VERSION_NAME,
             uiState = uiState,
             onNavigateToSearch = {
                 navController.navigate(Screen.Search.route) {

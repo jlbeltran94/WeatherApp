@@ -10,7 +10,7 @@ import com.jlbeltran94.weatherapp.domain.model.Weather
 import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
 import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailScreen
 import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailUiState
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.commonui.TestTags
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test

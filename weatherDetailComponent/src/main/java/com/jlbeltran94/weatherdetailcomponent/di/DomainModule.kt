@@ -10,7 +10,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-internal object DomainModule {
+object DomainModule {
     @Provides
     @ViewModelScoped
     fun provideGetWeatherUseCase(repository: WeatherRepository): GetWeatherUseCase {

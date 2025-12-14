@@ -12,7 +12,7 @@ import com.jlbeltran94.weatherapp.domain.model.RecentSearch
 import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
 import com.jlbeltran94.weatherapp.presentation.screens.search.SearchScreen
 import com.jlbeltran94.weatherapp.presentation.screens.search.SearchUiState
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
+import com.jlbeltran94.commonui.TestTags
 import kotlinx.coroutines.flow.MutableSharedFlow
 import org.junit.Assert.assertEquals
 import org.junit.Rule
