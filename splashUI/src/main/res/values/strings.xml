@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <!-- Splash Screen -->
+    <string name="splash_app_name">@string/app_name</string>
+    <string name="splash_tagline">Your weather, simplified.</string>
+    <string name="splash_version">Version %1$s</string>
+</resources>

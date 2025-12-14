@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.screens.splash
+package com.jlbeltran94.splashui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -26,9 +26,6 @@ import com.jlbeltran94.commonui.theme.AppTheme.dimens
 import com.jlbeltran94.commonui.theme.DarkBlue
 import com.jlbeltran94.commonui.theme.SkyBlue
 import com.jlbeltran94.commonui.theme.White
-import com.jlbeltran94.weatherapp.BuildConfig
-import com.jlbeltran94.weatherapp.R
-import com.jlbeltran94.weatherapp.presentation.util.TestTags
 
 @Composable
 fun SplashScreen(
@@ -47,7 +44,7 @@ fun SplashScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Brush.verticalGradient(colors = listOf(SkyBlue, DarkBlue)))
-                        .testTag(TestTags.SPLASH_LOADING),
+                        .testTag("TestTags.SPLASH_LOADING"),
                     contentAlignment = Alignment.Center
                 ) {
                     Column(

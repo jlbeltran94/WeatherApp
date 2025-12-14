@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.data.local
+package com.jlbeltran94.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

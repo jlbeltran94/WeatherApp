@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.screens.splash
+package com.jlbeltran94.splashui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
