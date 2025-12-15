@@ -13,16 +13,6 @@ fun SearchResponseDto.toCity(): City = City(
     lat = lat,
     lon = lon
 )
-//fun Weather.toCity(): City {
-//    return City(
-//        id = "$cityName,$country",
-//        name = cityName,
-//        region = region,
-//        country = country,
-//        lat = cityLat,
-//        lon = cityLon
-//    )
-//}
 
 fun RecentSearchEntity.toRecentSearch(): RecentSearch = RecentSearch(
     id = id,
@@ -45,4 +35,3 @@ fun RecentSearch.toRecentSearchEntity(): RecentSearchEntity = RecentSearchEntity
     conditionIcon = conditionIcon,
     timestamp = System.currentTimeMillis()
 )
-

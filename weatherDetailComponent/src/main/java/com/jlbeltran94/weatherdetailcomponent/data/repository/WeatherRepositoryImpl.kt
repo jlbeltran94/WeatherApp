@@ -21,4 +21,3 @@ class WeatherRepositoryImpl @Inject constructor(
         const val DAYS_IN_WEEK = 7
     }
 }
-

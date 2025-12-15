@@ -1,8 +1,8 @@
 package com.jlbeltran94.searchlocationcomponent.di
 
+import com.jlbeltran94.searchlocationcomponent.data.local.dao.RecentSearchDao
 import com.jlbeltran94.searchlocationcomponent.data.remote.CityApiService
 import com.jlbeltran94.searchlocationcomponent.data.repository.CityRepositoryImpl
-import com.jlbeltran94.searchlocationcomponent.data.local.dao.RecentSearchDao
 import com.jlbeltran94.searchlocationcomponent.data.repository.RecentSearchesRepositoryImpl
 import com.jlbeltran94.searchlocationcomponent.domain.repository.CityRepository
 import com.jlbeltran94.searchlocationcomponent.domain.repository.RecentSearchesRepository
@@ -25,7 +25,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideRecentSearchesRepository(recentSearchDao: RecentSearchDao): RecentSearchesRepository{
+    fun provideRecentSearchesRepository(recentSearchDao: RecentSearchDao): RecentSearchesRepository {
         return RecentSearchesRepositoryImpl(recentSearchDao)
     }
 }

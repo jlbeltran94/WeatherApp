@@ -20,5 +20,4 @@ object RepositoryModule {
     ): WeatherRepository {
         return WeatherRepositoryImpl(apiService)
     }
-
 }

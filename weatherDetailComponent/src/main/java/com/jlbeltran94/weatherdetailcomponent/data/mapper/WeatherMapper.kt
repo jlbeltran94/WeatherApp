@@ -63,7 +63,6 @@ fun WeatherResponseDto.toWeather(): Weather {
     )
 }
 
-
 internal fun formatTime(timeString: String): String {
     return try {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
