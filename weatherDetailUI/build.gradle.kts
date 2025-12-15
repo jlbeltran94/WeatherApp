@@ -48,6 +48,10 @@ android {
             isIncludeAndroidResources = true
         }
     }
+    detekt {
+        buildUponDefaultConfig = true
+        config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    }
 }
 
 dependencies {

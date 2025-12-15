@@ -37,6 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    detekt {
+        buildUponDefaultConfig = true
+        config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    }
 }
 
 dependencies {
