@@ -8,13 +8,12 @@ import com.jlbeltran94.searchlocationcomponent.domain.repository.CityRepository
 import javax.inject.Inject
 
 class CityRepositoryImpl @Inject constructor(
-    private val apiService: CityApiService,
-    private val apiKey: String
+    private val apiService: CityApiService
 ) : CityRepository {
 
     override suspend fun searchCities(query: String): Result<List<City>> {
         return safeApiCall {
-            val response = apiService.searchCities(apiKey, query)
+            val response = apiService.searchCities(query)
             response.map { it.toCity() }
         }
     }

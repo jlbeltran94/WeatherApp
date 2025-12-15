@@ -17,9 +17,8 @@ object RepositoryModule {
     @Singleton
     fun provideWeatherRepository(
         apiService: WeatherApiService,
-        apiKey: String
     ): WeatherRepository {
-        return WeatherRepositoryImpl(apiService, apiKey)
+        return WeatherRepositoryImpl(apiService)
     }
 
 }

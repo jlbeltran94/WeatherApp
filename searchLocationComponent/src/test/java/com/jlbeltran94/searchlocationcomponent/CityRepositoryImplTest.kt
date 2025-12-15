@@ -17,12 +17,11 @@ class CityRepositoryImplTest {
 
     private lateinit var cityApiService: CityApiService
     private lateinit var cityRepository: CityRepositoryImpl
-    private val apiKey = "test_api_key"
 
     @Before
     fun setUp() {
         cityApiService = mockk()
-        cityRepository = CityRepositoryImpl(cityApiService, apiKey)
+        cityRepository = CityRepositoryImpl(cityApiService)
     }
 
     @Test
@@ -39,19 +38,19 @@ class CityRepositoryImplTest {
                 url = "london-city-of-london-greater-london-united-kingdom"
             )
         )
-        coEvery { cityApiService.searchCities(apiKey, query) } returns searchResponse
+        coEvery { cityApiService.searchCities(query) } returns searchResponse
         val result = cityRepository.searchCities(query)
         Assert.assertTrue(result.isSuccess)
         Assert.assertEquals(1, result.getOrNull()?.size)
         Assert.assertEquals("London", result.getOrNull()?.first()?.name)
-        coVerify(exactly = 1) { cityApiService.searchCities(apiKey, query) }
+        coVerify(exactly = 1) { cityApiService.searchCities(query) }
     }
 
     @Test
     fun `searchCities should return failure result on api error`() = runBlocking {
         val query = "London"
         val exception = IOException("Network failed")
-        coEvery { cityApiService.searchCities(apiKey, query) } throws exception
+        coEvery { cityApiService.searchCities(query) } throws exception
         val result = cityRepository.searchCities(query)
         Assert.assertTrue(result.isFailure)
         Assert.assertTrue(result.exceptionOrNull() is DomainException.IOError)

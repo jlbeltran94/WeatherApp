@@ -8,12 +8,11 @@ import com.jlbeltran94.weatherdetailcomponent.domain.repository.WeatherRepositor
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
-    private val apiService: WeatherApiService,
-    private val apiKey: String
+    private val apiService: WeatherApiService
 ) : WeatherRepository {
     override suspend fun getWeather(cityQuery: String): Result<Weather> {
         return safeApiCall {
-            val response = apiService.getForecastWeather(apiKey, cityQuery, DAYS_IN_WEEK)
+            val response = apiService.getForecastWeather(cityQuery, DAYS_IN_WEEK)
             response.toWeather()
         }
     }

@@ -11,11 +11,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Named
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val networkMonitor: NetworkMonitor,
-    private val apiKey: String
+    @Named("ApiKey") private val apiKey: String
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<SplashUiState>(SplashUiState.Loading)

@@ -18,10 +18,9 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideCityRepository(
-        apiService: CityApiService,
-        apiKey: String
+        apiService: CityApiService
     ): CityRepository {
-        return CityRepositoryImpl(apiService, apiKey)
+        return CityRepositoryImpl(apiService)
     }
 
     @Provides
