@@ -38,8 +38,7 @@ object NetworkModule {
             }
             builder.addInterceptor(loggingInterceptor)
         }
-        return builder
-            .addInterceptor(authInterceptor)
+        return builder.addInterceptor(authInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
@@ -67,18 +66,15 @@ object NetworkModule {
     fun provideAuthInterceptor(@Named("ApiKey") apiKey: String): Interceptor {
         return Interceptor { chain ->
             val originalRequest = chain.request()
-            val url = originalRequest.url.newBuilder()
-                .addQueryParameter("key", apiKey)
-                .build()
+            val url = originalRequest.url.newBuilder().addQueryParameter("key", apiKey).build()
             val newRequest = originalRequest.newBuilder().url(url).build()
             chain.proceed(newRequest)
         }
     }
-
 }
 
 fun String.withProtocol(): String {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+    return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
         "https:$this"
     } else {
         "http:$this"
