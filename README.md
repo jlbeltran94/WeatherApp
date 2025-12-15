@@ -60,31 +60,21 @@ different parts of the application.
 
 ## File Structure
 
-The project follows a standard Android structure, with the code organized into packages based on
-features and layers.
+The project is organized into multiple modules to promote separation of concerns and scalability. This modular structure enhances maintainability and allows for independent development and testing of different features.
 
-```kotlin
-app /
-└── src/
-└── main/
-├── java/com/jlbeltran94/weatherapp/
-│   ├── data/
-│   │   ├── local/          # Room database, DAOs, and entities
-│   │   ├── remote/         # Retrofit API interface, DTOs
-│   │   └── repository/     # Repository implementation
-│   ├── di/                 # Hilt dependency injection modules
-│   ├── domain/
-│   │   ├── model/          # Core domain models
-│   │   └── repository/     # Repository interface
-│   └── presentation/       # UI layer (Compose screens, ViewModels, etc.)
-│       ├── components/     # Reusable UI components
-│       ├── screens/        # Main composable screens
-│       └── util/           # Utility classes and extensions
-│           └── extensions/ # Extension functions (e.g., StringExtensions.kt)
-└── res/
-├── drawable/
-├── layout/
-└── values/
+```
+WeatherApp/
+├── app/                      # Main application module, integrates all features
+├── commonModel/              # Data models shared across the app
+├── commonNetwork/            # Networking setup (Retrofit, OkHttp)
+├── commonUI/                 # Shared Jetpack Compose UI components and themes
+├── database/                 # Room database setup and DAOs
+├── errorUI/                  # Composable for displaying generic errors
+├── searchLocationComponent/  # Data and domain layers for the search feature
+├── searchLocationUI/         # UI layer for the search feature
+├── splashUI/                 # Splash screen implementation
+├── weatherDetailComponent/   # Data and domain layers for the weather detail feature
+└── weatherDetailUI/          # UI layer for the weather detail feature
 ```
 
 ## Getting Started

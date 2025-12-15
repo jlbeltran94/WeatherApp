@@ -2,8 +2,8 @@ package com.jlbeltran94.splashui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.commonnetwork.util.NetworkMonitor
+import com.jlbeltran94.commonui.ErrorType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
