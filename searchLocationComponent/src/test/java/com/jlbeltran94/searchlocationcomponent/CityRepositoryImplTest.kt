@@ -1,14 +1,14 @@
-package com.jlbeltran94.weatherapp.data.repository
+package com.jlbeltran94.searchlocationcomponent
 
-import com.jlbeltran94.weatherapp.data.remote.CityApiService
-import com.jlbeltran94.weatherapp.data.remote.dto.SearchResponseDto
-import com.jlbeltran94.weatherapp.domain.exception.DomainException
+import com.jlbeltran94.commonmodel.exception.DomainException
+import com.jlbeltran94.searchlocationcomponent.data.remote.CityApiService
+import com.jlbeltran94.searchlocationcomponent.data.remote.dto.SearchResponseDto
+import com.jlbeltran94.searchlocationcomponent.data.repository.CityRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import java.io.IOException
@@ -41,9 +41,9 @@ class CityRepositoryImplTest {
         )
         coEvery { cityApiService.searchCities(apiKey, query) } returns searchResponse
         val result = cityRepository.searchCities(query)
-        assertTrue(result.isSuccess)
-        assertEquals(1, result.getOrNull()?.size)
-        assertEquals("London", result.getOrNull()?.first()?.name)
+        Assert.assertTrue(result.isSuccess)
+        Assert.assertEquals(1, result.getOrNull()?.size)
+        Assert.assertEquals("London", result.getOrNull()?.first()?.name)
         coVerify(exactly = 1) { cityApiService.searchCities(apiKey, query) }
     }
 
@@ -53,7 +53,7 @@ class CityRepositoryImplTest {
         val exception = IOException("Network failed")
         coEvery { cityApiService.searchCities(apiKey, query) } throws exception
         val result = cityRepository.searchCities(query)
-        assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is DomainException.IOError)
+        Assert.assertTrue(result.isFailure)
+        Assert.assertTrue(result.exceptionOrNull() is DomainException.IOError)
     }
 }

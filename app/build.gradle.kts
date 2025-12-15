@@ -134,6 +134,7 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     // Testing
+    testFixturesImplementation(project(":commonModel"))
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)

@@ -1,15 +1,12 @@
-package com.jlbeltran94.weatherapp.presentation.detail
+package com.jlbeltran94.weatherdetailui
 
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
-import com.jlbeltran94.weatherapp.domain.exception.DomainException
-import com.jlbeltran94.weatherapp.domain.model.Weather
-import com.jlbeltran94.weatherapp.domain.usecase.GetWeatherUseCase
-import com.jlbeltran94.weatherapp.domain.usecase.SaveRecentSearchUseCase
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailUiState
-import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailViewModel
-import com.jlbeltran94.weatherapp.util.MainCoroutineRule
+import com.jlbeltran94.commonmodel.exception.DomainException
+import com.jlbeltran94.commonui.ErrorType
+import com.jlbeltran94.searchlocationcomponent.domain.usecase.SaveRecentSearchUseCase
+import com.jlbeltran94.weatherdetailcomponent.domain.model.Weather
+import com.jlbeltran94.weatherdetailcomponent.domain.usecase.GetWeatherUseCase
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -20,6 +17,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import util.MainCoroutineRule
 import java.io.IOException
 
 @ExperimentalCoroutinesApi

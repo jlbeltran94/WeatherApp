@@ -1,13 +1,13 @@
-package com.jlbeltran94.weatherapp.domain.usecase
+package com.jlbeltran94.weatherdetailcomponent
 
-import com.jlbeltran94.weatherapp.domain.model.Weather
-import com.jlbeltran94.weatherapp.domain.repository.WeatherRepository
+import com.jlbeltran94.weatherdetailcomponent.domain.model.Weather
+import com.jlbeltran94.weatherdetailcomponent.domain.repository.WeatherRepository
+import com.jlbeltran94.weatherdetailcomponent.domain.usecase.GetWeatherUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
@@ -47,7 +47,7 @@ class GetWeatherUseCaseTest {
         coEvery { weatherRepository.getWeather(cityQuery) } returns successResult
         val result = getWeatherUseCase(cityQuery)
         coVerify(exactly = 1) { weatherRepository.getWeather(cityQuery) }
-        assertEquals(successResult, result)
+        Assert.assertEquals(successResult, result)
     }
 
     @Test
@@ -58,7 +58,7 @@ class GetWeatherUseCaseTest {
         coEvery { weatherRepository.getWeather(cityQuery) } returns failureResult
         val result = getWeatherUseCase(cityQuery)
         coVerify(exactly = 1) { weatherRepository.getWeather(cityQuery) }
-        assertTrue(result.isFailure)
-        assertEquals(exception, result.exceptionOrNull())
+        Assert.assertTrue(result.isFailure)
+        Assert.assertEquals(exception, result.exceptionOrNull())
     }
 }

@@ -1,20 +1,20 @@
-package com.jlbeltran94.weatherapp.data.repository
+package com.jlbeltran94.weatherdetailcomponent
 
-import com.jlbeltran94.weatherapp.data.remote.WeatherApiService
-import com.jlbeltran94.weatherapp.data.remote.dto.ConditionDto
-import com.jlbeltran94.weatherapp.data.remote.dto.CurrentDto
-import com.jlbeltran94.weatherapp.data.remote.dto.DayDto
-import com.jlbeltran94.weatherapp.data.remote.dto.ForecastDayDto
-import com.jlbeltran94.weatherapp.data.remote.dto.ForecastDto
-import com.jlbeltran94.weatherapp.data.remote.dto.LocationDto
-import com.jlbeltran94.weatherapp.data.remote.dto.WeatherResponseDto
-import com.jlbeltran94.weatherapp.domain.exception.DomainException
+import com.jlbeltran94.commonmodel.exception.DomainException
+import com.jlbeltran94.weatherdetailcomponent.data.remote.WeatherApiService
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.ConditionDto
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.CurrentDto
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.DayDto
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.ForecastDayDto
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.ForecastDto
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.LocationDto
+import com.jlbeltran94.weatherdetailcomponent.data.remote.dto.WeatherResponseDto
+import com.jlbeltran94.weatherdetailcomponent.data.repository.WeatherRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import java.io.IOException
@@ -43,9 +43,9 @@ class WeatherRepositoryImplTest {
             )
         } returns weatherResponse
         val result = weatherRepository.getWeather(cityQuery)
-        assertTrue(result.isSuccess)
-        assertEquals("London", result.getOrNull()?.cityName)
-        assertEquals(15.0, result.getOrNull()?.temperature!!, 0.0)
+        Assert.assertTrue(result.isSuccess)
+        Assert.assertEquals("London", result.getOrNull()?.cityName)
+        Assert.assertEquals(15.0, result.getOrNull()?.temperature!!, 0.0)
         coVerify(exactly = 1) { weatherApiService.getForecastWeather(apiKey, cityQuery, 7) }
     }
 
@@ -57,8 +57,8 @@ class WeatherRepositoryImplTest {
 
         val result = weatherRepository.getWeather(cityQuery)
 
-        assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is DomainException.IOError)
+        Assert.assertTrue(result.isFailure)
+        Assert.assertTrue(result.exceptionOrNull() is DomainException.IOError)
     }
 
     private fun mockWeatherResponseDto(): WeatherResponseDto {

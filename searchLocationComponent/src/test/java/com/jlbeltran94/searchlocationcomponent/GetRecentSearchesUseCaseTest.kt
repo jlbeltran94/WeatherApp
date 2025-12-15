@@ -1,7 +1,8 @@
-package com.jlbeltran94.weatherapp.domain.usecase
+package com.jlbeltran94.searchlocationcomponent
 
-import com.jlbeltran94.weatherapp.domain.model.RecentSearch
-import com.jlbeltran94.weatherapp.domain.repository.RecentSearchesRepository
+import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
+import com.jlbeltran94.searchlocationcomponent.domain.repository.RecentSearchesRepository
+import com.jlbeltran94.searchlocationcomponent.domain.usecase.GetRecentSearchesUseCase
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk

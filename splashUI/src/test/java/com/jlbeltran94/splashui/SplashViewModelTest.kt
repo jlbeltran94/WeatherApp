@@ -1,11 +1,8 @@
-package com.jlbeltran94.weatherapp.presentation.splash
+package com.jlbeltran94.splashui
 
 import app.cash.turbine.test
 import com.jlbeltran94.commonnetwork.util.NetworkMonitor
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashUiState
-import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashViewModel
-import com.jlbeltran94.weatherapp.util.MainCoroutineRule
+import com.jlbeltran94.commonui.ErrorType
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,6 +13,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import util.MainCoroutineRule
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {

@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.util
+package util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

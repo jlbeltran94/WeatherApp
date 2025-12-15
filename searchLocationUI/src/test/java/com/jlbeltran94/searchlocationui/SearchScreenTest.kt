@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.search
+package com.jlbeltran94.searchlocationui
 
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
@@ -7,12 +7,12 @@ import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.jlbeltran94.weatherapp.domain.model.City
-import com.jlbeltran94.weatherapp.domain.model.RecentSearch
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.screens.search.SearchScreen
-import com.jlbeltran94.weatherapp.presentation.screens.search.SearchUiState
+import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.commonui.TestTags
+import com.jlbeltran94.searchlocationcomponent.domain.model.City
+import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
+import com.jlbeltran94.searchlocationui.screen.SearchScreen
+import com.jlbeltran94.searchlocationui.screen.SearchUiState
 import kotlinx.coroutines.flow.MutableSharedFlow
 import org.junit.Assert.assertEquals
 import org.junit.Rule

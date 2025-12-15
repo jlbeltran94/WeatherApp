@@ -1,12 +1,10 @@
-package com.jlbeltran94.weatherapp.presentation.splash
+package com.jlbeltran94.splashui
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashScreen
-import com.jlbeltran94.weatherapp.presentation.screens.splash.SplashUiState
+import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.commonui.TestTags
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -24,6 +22,7 @@ class SplashScreenTest {
     fun `test Splash screen - Loading status`() {
         composeTestRule.setContent {
             SplashScreen(
+                versionName = "",
                 uiState = SplashUiState.Loading,
                 onNavigateToSearch = { },
                 onNavigateToError = { }
@@ -37,9 +36,11 @@ class SplashScreenTest {
         var navigateToSearchCalled = false
         composeTestRule.setContent {
             SplashScreen(
+                versionName = "",
                 uiState = SplashUiState.Success,
                 onNavigateToSearch = { navigateToSearchCalled = true },
-                onNavigateToError = { }
+                onNavigateToError = { },
+
             )
         }
         composeTestRule.onNodeWithTag(TestTags.SPLASH_LOADING).assertDoesNotExist()
@@ -51,6 +52,7 @@ class SplashScreenTest {
         var errorType: ErrorType? = null
         composeTestRule.setContent {
             SplashScreen(
+                versionName = "",
                 uiState = SplashUiState.Error(ErrorType.UNKNOWN),
                 onNavigateToSearch = { },
                 onNavigateToError = { errorType = it }

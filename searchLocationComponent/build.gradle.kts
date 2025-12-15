@@ -56,6 +56,7 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.junit.ktx)
+    testImplementation(project(":commonModel"))
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 

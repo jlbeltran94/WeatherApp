@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":commonUI"))
     implementation(project(":commonModel"))
     implementation(project(":commonNetwork"))
+    testImplementation(testFixtures(project(":commonModel")))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.testImplementation
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -49,6 +51,7 @@ dependencies {
     implementation(project(":commonModel"))
     implementation(project(":commonNetwork"))
     implementation(project(":commonUI"))
+    testImplementation(testFixtures(project(":commonModel")))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

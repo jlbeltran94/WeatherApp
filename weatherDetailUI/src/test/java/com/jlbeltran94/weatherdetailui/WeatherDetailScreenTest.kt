@@ -1,4 +1,4 @@
-package com.jlbeltran94.weatherapp.presentation.detail
+package com.jlbeltran94.weatherdetailui
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -6,11 +6,9 @@ import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.jlbeltran94.weatherapp.domain.model.Weather
-import com.jlbeltran94.weatherapp.presentation.navigation.ErrorType
-import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailScreen
-import com.jlbeltran94.weatherapp.presentation.screens.detail.WeatherDetailUiState
+import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.commonui.TestTags
+import com.jlbeltran94.weatherdetailcomponent.domain.model.Weather
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
