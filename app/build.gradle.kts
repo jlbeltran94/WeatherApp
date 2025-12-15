@@ -73,6 +73,16 @@ detekt {
 }
 
 dependencies {
+    implementation(project(":commonNetwork"))
+    implementation(project(":commonUI"))
+    implementation(project(":commonModel"))
+    implementation(project(":database"))
+    implementation(project(":searchLocationUI"))
+    implementation(project(":searchLocationComponent"))
+    implementation(project(":weatherDetailComponent"))
+    implementation(project(":weatherDetailUI"))
+    implementation(project(":splashUI"))
+    implementation(project(":errorUI"))
     // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -124,6 +134,7 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     // Testing
+    testFixturesImplementation(project(":commonModel"))
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)

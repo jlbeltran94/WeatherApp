@@ -1,6 +1,9 @@
 package com.jlbeltran94.weatherapp.di
 
-import com.jlbeltran94.weatherapp.data.remote.WeatherApiService
+import com.jlbeltran94.commonnetwork.di.NetworkModule
+import com.jlbeltran94.weatherdetailcomponent.data.remote.WeatherApiService
+import com.jlbeltran94.weatherdetailcomponent.di.NetworkModule as WeatherNetworkModule
+import com.jlbeltran94.searchlocationcomponent.di.NetworkModule as SearchNetworkModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
@@ -13,7 +16,7 @@ import javax.inject.Singleton
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [NetworkModule::class]
+    replaces = [NetworkModule::class, WeatherNetworkModule::class, SearchNetworkModule::class]
 )
 object TestNetworkModule {
 
