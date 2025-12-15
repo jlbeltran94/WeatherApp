@@ -1,4 +1,4 @@
-package util
+package com.jlbeltran94.commonmodel.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

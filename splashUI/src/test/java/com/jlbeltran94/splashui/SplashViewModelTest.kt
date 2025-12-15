@@ -1,6 +1,7 @@
 package com.jlbeltran94.splashui
 
 import app.cash.turbine.test
+import com.jlbeltran94.commonmodel.util.MainCoroutineRule
 import com.jlbeltran94.commonnetwork.util.NetworkMonitor
 import com.jlbeltran94.commonui.ErrorType
 import io.mockk.every
@@ -13,7 +14,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import util.MainCoroutineRule
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {

@@ -3,6 +3,7 @@ package com.jlbeltran94.weatherdetailui
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import com.jlbeltran94.commonmodel.exception.DomainException
+import com.jlbeltran94.commonmodel.util.MainCoroutineRule
 import com.jlbeltran94.commonui.ErrorType
 import com.jlbeltran94.searchlocationcomponent.domain.usecase.SaveRecentSearchUseCase
 import com.jlbeltran94.weatherdetailcomponent.domain.model.Weather
@@ -17,7 +18,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import util.MainCoroutineRule
 import java.io.IOException
 
 @ExperimentalCoroutinesApi

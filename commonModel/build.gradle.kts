@@ -108,11 +108,13 @@ dependencies {
     testImplementation(libs.hilt.testing)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.compose.ui.test.junit4)
+    testFixturesImplementation(libs.androidx.compose.ui.test.junit4)
     kspTest(libs.hilt.compiler)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    testFixturesImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.hilt.testing)
     androidTestImplementation(libs.mockk.android)
@@ -120,5 +122,7 @@ dependencies {
     kspAndroidTest(libs.hilt.compiler)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
+    testFixturesImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    testFixturesImplementation(libs.androidx.compose.ui.test.manifest)
 }

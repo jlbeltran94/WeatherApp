@@ -2,6 +2,7 @@ package com.jlbeltran94.searchlocationui
 
 import app.cash.turbine.test
 import com.jlbeltran94.commonmodel.exception.DomainException
+import com.jlbeltran94.commonmodel.util.MainCoroutineRule
 import com.jlbeltran94.searchlocationcomponent.domain.model.City
 import com.jlbeltran94.searchlocationcomponent.domain.model.RecentSearch
 import com.jlbeltran94.searchlocationcomponent.domain.usecase.GetRecentSearchesUseCase
@@ -9,7 +10,6 @@ import com.jlbeltran94.searchlocationcomponent.domain.usecase.SearchCitiesUseCas
 import com.jlbeltran94.searchlocationui.screen.SearchUiState
 import com.jlbeltran94.searchlocationui.screen.SearchViewModel
 import com.jlbeltran94.searchlocationui.screen.UiEvent
-
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
