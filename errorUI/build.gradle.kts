@@ -64,31 +64,11 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
-    // Retrofit & OkHttp
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.kotlinx.serialization)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-
-    // Room
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
-
-    // Lottie
-    implementation(libs.lottie.compose)
-
-    // Navigation
-    implementation(libs.navigation.compose)
-
     // ViewModel
     implementation(libs.lifecycle.viewmodel.compose)
 
     // Coil
     implementation(libs.coil.compose)
-
-    // Kotlinx Serialization
-    implementation(libs.kotlinx.serialization.json)
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)

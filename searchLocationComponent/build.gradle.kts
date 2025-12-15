@@ -71,12 +71,6 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
-    // Lottie
-    implementation(libs.lottie.compose)
-
-    // Navigation
-    implementation(libs.navigation.compose)
-
     // ViewModel
     implementation(libs.lifecycle.viewmodel.compose)
 
